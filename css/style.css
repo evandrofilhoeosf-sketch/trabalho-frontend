@@ -20,8 +20,8 @@
 
 body {
     font-family: var(--font-sans);
-    /* Degradê suave em tons pastel (azul claro e rosa bem leve) */
-    background: linear-gradient(180deg, #e8f1ff 0%, #faeef8 50%, #ffffff 100%);
+    /* Degradê suave em tons pastel (azul celeste e rosa bem claro) */
+    background: linear-gradient(180deg, #dce8ff 0%, #f7e6f4 50%, #ffffff 100%);
     color: var(--text-primary);
     line-height: 1.7;
     display: flex;
@@ -268,7 +268,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 /* --- SEÇÃO HERO EDITORIAL --- */
 .hero-section {
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(5px);
     padding: 2.5rem;
     border-radius: 4px;
@@ -292,7 +292,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 
 /* --- BARRA DE PESQUISA MINIMALISTA --- */
 .search-banner {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(5px);
     padding: 2rem;
     border-radius: 4px;
