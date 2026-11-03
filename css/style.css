@@ -22,7 +22,7 @@ body {
     font-family: var(--font-sans);
     /* Fundo com degradê de azul, rosa e branco */
     background: linear-gradient(0deg, #ffffff 0%, #f572d8 35%, #5599ff 100%);
-    color: var(--text-primary);
+    color: #ffffff; /* Texto geral do body em branco para o fundo com degradê */
     line-height: 1.7;
     display: flex;
     flex-direction: column;
@@ -98,9 +98,9 @@ nav ul li a.active {
     padding-bottom: 2px;
 }
 
-/* Compatibilidade com header padrão */
+/* Compatibilidade com header padrão nas outras páginas */
 header {
-    background-color: #ffffff; /* Cabeçalho branco fixo nas outras páginas */
+    background-color: #ffffff;
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -126,10 +126,11 @@ main {
     width: 100%;
 }
 
+/* Títulos gerais fora dos cards ficam em branco */
 h1, h2, h3, .page-title, .page-title2, .section-heading {
     font-family: var(--font-serif);
     font-weight: 600;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .page-title {
@@ -145,12 +146,12 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 
 .page-subtitle {
     font-size: 1.15rem;
-    color: var(--text-primary);
+    color: #ffffff;
     margin-bottom: 2.5rem;
     max-width: 900px;
 }
 
-/* --- GRID DE CARDS --- */
+/* --- GRID DE CARDS (Mantidos com fundo branco e texto escuro para legibilidade) --- */
 .grid-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -186,10 +187,12 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     flex: 1;
 }
 
+/* Textos dentro dos cartões brancos voltam a ser escuros para boa leitura */
 .card-content h3 {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
     letter-spacing: -0.5px;
+    color: var(--text-primary);
 }
 
 .card-content p {
@@ -266,11 +269,10 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 /* --- SEÇÃO HERO EDITORIAL --- */
 .hero-section {
     text-align: left;
-    padding: 3rem 0;
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(5px);
     border-radius: 6px;
-    padding: 2rem;
+    padding: 2.5rem;
     margin-bottom: 2rem;
     border: 1px solid var(--border-color);
 }
@@ -297,12 +299,14 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     border-radius: 4px;
     border: 1px solid var(--border-color);
     margin: 2.5rem 0;
+    color: var(--text-primary);
 }
 
 .search-banner h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-family: var(--font-serif);
+    color: var(--text-primary);
 }
 
 .search-inputs {
@@ -319,6 +323,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     border: 1px solid var(--border-color);
     font-size: 0.95rem;
     background-color: #ffffff;
+    color: var(--text-primary);
     font-family: var(--font-sans);
 }
 
@@ -347,6 +352,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     border-radius: 4px;
     border: 1px solid var(--border-color);
     max-width: 700px;
+    color: var(--text-primary);
 }
 
 .form-group {
@@ -360,6 +366,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     font-size: 0.9rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    color: var(--text-primary);
 }
 
 .form-group input,
@@ -370,6 +377,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     border-radius: 2px;
     font-family: var(--font-sans);
     background-color: #ffffff;
+    color: var(--text-primary);
     font-size: 1rem;
 }
 
