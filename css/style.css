@@ -20,9 +20,9 @@
 
 body {
     font-family: var(--font-sans);
-    /* Degradê suave em tons pastel (azul celeste e rosa bem claro) */
-    background: linear-gradient(180deg, #dce8ff 0%, #f7e6f4 50%, #ffffff 100%);
-    color: var(--text-primary);
+    /* Fundo com degradê de azul, rosa e branco */
+    background: linear-gradient(0deg, #ffffff 0%, #f39de0 20%, #81b4ff 100%);
+    color: #ffffff; /* Texto geral do body em branco para o fundo com degradê */
     line-height: 1.7;
     display: flex;
     flex-direction: column;
@@ -31,13 +31,13 @@ body {
 
 /* --- CABEÇALHO E NAVEGAÇÃO (<header>) --- */
 .site-header {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Cabeçalho branco fixo */
     border-bottom: 1px solid var(--border-color);
     padding: 1.5rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .header-container {
@@ -105,7 +105,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .nav-container {
@@ -126,11 +126,11 @@ main {
     width: 100%;
 }
 
-/* Tipografia Editorial Limpa */
+/* Títulos gerais fora dos cards ficam em branco */
 h1, h2, h3, .page-title, .page-title2, .section-heading {
     font-family: var(--font-serif);
     font-weight: 600;
-    color: var(--text-primary);
+    color: #1b313a;
 }
 
 .page-title {
@@ -146,12 +146,12 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 
 .page-subtitle {
     font-size: 1.15rem;
-    color: var(--text-secondary);
+    color: #1b313a;
     margin-bottom: 2.5rem;
     max-width: 900px;
 }
 
-/* --- GRID DE CARDS EDITORIAL --- */
+/* --- GRID DE CARDS (Mantidos com fundo branco e texto escuro para legibilidade) --- */
 .grid-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -171,7 +171,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -187,6 +187,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     flex: 1;
 }
 
+/* Textos dentro dos cartões brancos voltam a ser escuros para boa leitura */
 .card-content h3 {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
@@ -201,7 +202,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     flex: 1;
 }
 
-/* Botões Sofisticados */
+/* Botões */
 .btn {
     display: inline-block;
     padding: 0.7rem 1.5rem;
@@ -213,7 +214,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     font-size: 0.85rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
     align-self: flex-start;
 }
 
@@ -227,7 +228,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     border-radius: 4px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     text-decoration: none;
     display: block;
@@ -268,11 +269,11 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
 /* --- SEÇÃO HERO EDITORIAL --- */
 .hero-section {
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(5px);
+    border-radius: 6px;
     padding: 2.5rem;
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     border: 1px solid var(--border-color);
 }
 
@@ -290,14 +291,15 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     line-height: 1.8;
 }
 
-/* --- BARRA DE PESQUISA MINIMALISTA --- */
+/* --- BARRA DE PESQUISA --- */
 .search-banner {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     padding: 2rem;
     border-radius: 4px;
     border: 1px solid var(--border-color);
     margin: 2.5rem 0;
+    color: var(--text-primary);
 }
 
 .search-banner h3 {
@@ -350,6 +352,7 @@ h1, h2, h3, .page-title, .page-title2, .section-heading {
     border-radius: 4px;
     border: 1px solid var(--border-color);
     max-width: 700px;
+    color: var(--text-primary);
 }
 
 .form-group {
