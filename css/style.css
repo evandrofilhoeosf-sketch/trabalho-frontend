@@ -345,12 +345,13 @@ h1, h2, h3, .section-heading {
     background: var(--card-bg);
     border: 1px solid var(--card-bg);
     border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .card img,
@@ -360,6 +361,7 @@ h1, h2, h3, .section-heading {
     height: 800px;
     margin-top: 0;
     object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .card-content {
@@ -466,6 +468,7 @@ h1, h2, h3, .section-heading {
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 5px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .places-main .place-image-wrap figcaption {
@@ -593,6 +596,7 @@ h1, h2, h3, .section-heading {
     width: 100%;
     height: 160px;
     overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .related-img-wrap img {
@@ -666,6 +670,108 @@ footer {
 }
 
 /* =====================================================
+   PÁGINA ONDE COMER (LAYOUT EDITORIAL ZIG-ZAG)
+   ===================================================== */
+.food-main {
+    padding-top: 3.5rem;
+}
+
+.food-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.food-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.food-item.reverse .food-img-wrap {
+    order: 2;
+}
+
+.food-item.reverse .food-info {
+    order: 1;
+}
+
+.food-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.food-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white-color);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.food-info {
+    color: var(--white-color);
+    text-align: left;
+}
+
+.food-info h2 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--white-color);
+}
+
+.food-highlight {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.5;
+}
+
+.food-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--white-color);
+}
+
+.food-recommendation {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid var(--white-color);
+    padding: 0.8rem 1rem;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 4px 4px 0;
+}
+
+/* =====================================================
    RESPONSIVIDADE (TABLETS E CELULARES)
    ===================================================== */
 @media (max-width: 992px) {
@@ -718,6 +824,26 @@ footer {
 
     .places-main .place-image-wrap img {
         max-height: 380px;
+    }
+
+    .food-item,
+    .food-item.reverse {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .food-item.reverse .food-img-wrap,
+    .food-item.reverse .food-info {
+        order: initial;
+    }
+
+    .food-img-wrap {
+        height: 260px;
+    }
+
+    .food-info h2 {
+        font-size: 1.8rem;
     }
 }
 
