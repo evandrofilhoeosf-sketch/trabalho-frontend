@@ -1520,32 +1520,40 @@ main {
 
 }
 
-.info-box {
-    margin-top: 1.5rem;
-    padding: 1.2rem 1.5rem;
-    border: 3px solid #ffcc00; 
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.15); 
+.info-card {
+    display: inline-block;                
+    width: fit-content;              
+    max-width: 100%;                     
+    margin: 1.5rem auto 0 auto;    
+    padding: 1.2rem 1.8rem;
+    background-color: var(--white-color); 
+    border-radius: 4px;            
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25); 
     text-align: center;
 }
 
-.info-box p {
-    margin-bottom: 0.5rem !important;
-    font-size: 1rem !important;
-    color: #ffffff;
-    line-height: 1.5;
+.place-description {
+    text-align: center;                   
 }
 
-.info-box p:last-child {
+.info-card p {
+    margin-bottom: 0.5rem !important;
+    color: var(--text-primary) !important; 
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+}
+
+.info-card p:last-child {
     margin-bottom: 0 !important;
 }
 
-.info-box a {
-    color: #ffffff;
+.info-card a {
+    color: var(--text-primary);
     font-weight: bold;
     text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
-.info-box a:hover {
-    color: #ffcc00;
+.info-card a:hover {
+    color: var(--accent-es1);
 }
