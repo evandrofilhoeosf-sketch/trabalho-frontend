@@ -20,14 +20,24 @@
 html {
     min-height: 100%;
     scroll-behavior: smooth;
-    background: linear-gradient(90deg, #eb8ee3 0%, #8f0c77 50%, #eb8ee3 100%);
+    background: linear-gradient(
+        90deg,
+        #eb8ee3 0%,
+        #8f0c77 50%,
+        #eb8ee3 100%
+    );
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100% 100vh;
+    background-size: cover;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+
     min-height: 100vh;
+    margin: 0;
+
     background: transparent;
     font-family: var(--font-sans);
     line-height: 1.7;
@@ -285,13 +295,19 @@ body {
 }
 
 /* --- CONTEÚDO PRINCIPAL --- */
+
 main {
     display: block;
+
+    flex: 1 0 auto;
     width: 100%;
     max-width: 2000px;
-    min-height: calc(100vh - 65px);
+
+    min-height: 0;
     margin: 0 auto;
+
     padding: 4rem 3rem;
+
     background: var(--accent-es1);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
@@ -379,7 +395,7 @@ h1, h2, h3, .section-heading {
 .card .img {
     display: block;
     width: 100%;
-    height: 630px;
+    height: 800px;
     margin-top: 0;
     object-fit: cover;
 }
@@ -574,15 +590,24 @@ h1, h2, h3, .section-heading {
 }
 
 /* --- RODAPÉ --- */
+
+/* --- RODAPÉ FIXO --- */
+
 footer {
-    position: static;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+    z-index: 2500;
+    margin: 0;
     padding: 1rem;
     color: var(--text-primary);
     background: var(--white-color);
     text-align: center;
     font-size: 0.85rem;
     letter-spacing: 0.3px;
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* --- TABLETS --- */
@@ -919,4 +944,608 @@ footer {
         font-size: 0.85rem;
         white-space: normal;
     }
+}
+/* =====================================================
+   PÁGINA LUGARES E CULTURA
+   ===================================================== */
+.places-main {
+    padding-top: 3.5rem;
+}
+
+.places-intro {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 3.5rem;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.places-intro .page-title {
+    margin-bottom: 1rem;
+    color: var(--white-color);
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.2;
+}
+
+.places-intro > p {
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--white-color);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.places-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.place-item {
+    width: 100%;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+}
+
+.place-title {
+    margin: 0 0 1.4rem;
+    color: var(--white-color);
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.place-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+.place-image-wrap {
+    width: 100%;
+    min-height: 320px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.place-image-wrap img {
+    display: block;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.place-description {
+    padding: 1rem;
+    color: var(--white-color);
+}
+
+.place-description h3 {
+    margin-bottom: 1rem;
+    color: var(--white-color);
+    font-size: 2rem;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.place-description p {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Alterna imagem e texto nos lugares pares */
+.place-item:nth-child(even) .place-image-wrap {
+    order: 2;
+}
+
+.place-item:nth-child(even) .place-description {
+    order: 1;
+}
+
+@media (max-width: 900px) {
+    .places-main {
+        padding: 2.8rem 1.5rem;
+    }
+
+    .place-item {
+        padding: 1.2rem;
+    }
+
+    .place-content {
+        gap: 1.25rem;
+    }
+
+    .place-image-wrap img {
+        height: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    .places-main {
+        padding: 2.2rem 1rem 3rem;
+    }
+
+    .places-intro {
+        margin-bottom: 2.2rem;
+    }
+
+    .places-intro .page-title {
+        font-size: clamp(2rem, 8vw, 2.7rem);
+    }
+
+    .places-intro > p {
+        font-size: 0.98rem;
+        line-height: 1.7;
+    }
+
+    .places-list {
+        gap: 2rem;
+    }
+
+    .place-item {
+        padding: 1rem;
+    }
+
+    .place-title {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .place-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .place-item:nth-child(even) .place-image-wrap,
+    .place-item:nth-child(even) .place-description {
+        order: initial;
+    }
+
+    .place-image-wrap {
+        min-height: 0;
+        width: 100%;
+    }
+
+    .place-image-wrap img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+    }
+
+    .place-description {
+        padding: 0.4rem 0.1rem 0.2rem;
+    }
+
+    .place-description h3 {
+        font-size: 1.45rem;
+    }
+
+    .place-description p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+/* =====================================================
+   CABEÇALHO FIXO E COMPACTO AO ROLAR
+   Funciona em computadores, tablets e celulares.
+   ===================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+    padding: 1rem 1.5rem;
+    background: #ffffff;
+    border-bottom: 1px solid var(--white-color);
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-main-container,
+.logo-center,
+.header-search-bar,
+.header-search-bar button,
+.side-nav ul,
+.side-nav ul li a,
+.menu-toggle,
+.menu-toggle span {
+    transition: all 0.3s ease;
+}
+
+/* Estado compacto em telas maiores */
+.site-header.header-reduzido {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.site-header.header-reduzido .header-main-container {
+    gap: 0.8rem;
+    margin-bottom: 0.35rem;
+    padding-bottom: 7px;
+}
+
+.site-header.header-reduzido .logo-center {
+    font-size: 2rem;
+}
+
+.site-header.header-reduzido .header-search-bar {
+    width: 40px;
+    height: 36px;
+}
+
+.site-header.header-reduzido .header-search-bar button {
+    flex-basis: 40px;
+    width: 40px;
+    min-width: 40px;
+}
+
+.site-header.header-reduzido .header-search-bar.search-open {
+    width: min(300px, 45vw);
+}
+
+.site-header.header-reduzido .side-nav ul {
+    gap: 0.8rem;
+}
+
+.site-header.header-reduzido .side-nav ul li a {
+    font-size: 0.78rem;
+}
+
+
+@media (max-width: 600px) {
+
+    .site-header.header-reduzido {
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+    }
+
+    .site-header.header-reduzido .logo-center {
+        font-size: 2rem;
+    }
+
+    .site-header.header-reduzido .header-main-container {
+        gap: 0.5rem;
+    }
+
+    .site-header.header-reduzido .side-nav ul {
+        padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        position: sticky;
+        top: 0;
+        padding: 0.85rem 1rem;
+    }
+
+    .header-main-container {
+        position: relative;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        margin-bottom: 0.65rem;
+        padding-bottom: 9px;
+    }
+
+    .logo-center {
+        align-self: center;
+        font-size: clamp(2.4rem, 10vw, 3.2rem);
+    }
+
+    .header-search-bar {
+        top: 0;
+        right: 0;
+        width: 42px;
+        height: 38px;
+        transform: none;
+    }
+
+    .header-search-bar button {
+        flex-basis: 42px;
+        width: 42px;
+        min-width: 42px;
+    }
+
+    .header-search-bar.search-open {
+        width: min(320px, calc(100vw - 2rem));
+    }
+
+    .menu-toggle {
+        top: 0.65rem;
+        left: 0.75rem;
+    }
+
+    .side-nav {
+        top: 100%;
+    }
+
+    /* Estado compacto no celular */
+    .site-header.header-reduzido {
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
+    }
+
+    .site-header.header-reduzido .header-main-container {
+        gap: 0.35rem;
+        margin-bottom: 0.3rem;
+        padding-bottom: 5px;
+    }
+
+    .site-header.header-reduzido .logo-center {
+        font-size: clamp(1.65rem, 7vw, 2rem);
+    }
+
+    .site-header.header-reduzido .header-search-bar {
+        top: 0;
+        width: 36px;
+        height: 34px;
+    }
+
+    .site-header.header-reduzido .header-search-bar button {
+        flex-basis: 36px;
+        width: 36px;
+        min-width: 36px;
+    }
+
+    .site-header.header-reduzido .header-search-bar.search-open {
+        width: min(290px, calc(100vw - 2rem));
+    }
+
+    .site-header.header-reduzido .menu-toggle {
+        top: 0.35rem;
+        left: 0.6rem;
+        padding: 6px;
+    }
+
+    .site-header.header-reduzido .menu-toggle span {
+        width: 21px;
+        height: 2px;
+        margin: 4px 0;
+    }
+
+    .site-header.header-reduzido .side-nav ul li a {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .header-main-container {
+        position: relative;
+    }
+
+    .header-search-bar {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 38px;
+        height: 30px;
+
+        transform: none;
+    }
+
+    .header-search-bar button {
+        flex: 0 0 38px;
+        width: 38px;
+        min-width: 38px;
+        height: 30px;
+    }
+
+    .header-search-bar.search-open {
+        width: min(320px, calc(100vw - 2rem));
+        height: 38px;
+    }
+
+    .header-search-bar.search-open button {
+        height: 38px;
+    }
+
+    /* Cabeçalho reduzido durante a rolagem */
+    .site-header.header-reduzido .header-search-bar {
+        width: 34px;
+        height: 28px;
+    }
+
+    .site-header.header-reduzido .header-search-bar button {
+        flex-basis: 34px;
+        width: 34px;
+        min-width: 34px;
+        height: 28px;
+    }
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
+
+
+/* =====================================================
+   LUGARES E CULTURA
+   IMAGEM ACIMA, LEGENDA E TEXTO ABAIXO
+   ===================================================== */
+
+/* Organização dos elementos */
+.places-list .place-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+/* Imagem */
+.places-list .place-image-wrap {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    text-align: center;
+}
+
+.places-list .place-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Legenda da imagem */
+.places-list .place-image-wrap figcaption {
+    margin-top: 0.55rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Texto abaixo da imagem */
+.places-list .place-description {
+    width: 100%;
+    padding: 1rem 0 0;
+    color: var(--white-color);
+}
+
+/* Subtítulo */
+.places-list .place-description h3 {
+    margin-bottom: 1rem;
+    color: var(--white-color);
+    text-align: center;
+}
+
+/* Parágrafos */
+.places-list .place-description p {
+    width: 100%;
+    margin-bottom: 1.2rem;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Remove a inversão de posição dos lugares pares */
+.places-list .place-item:nth-child(even) .place-image-wrap,
+.places-list .place-item:nth-child(even) .place-description {
+    order: initial;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .places-list .place-image-wrap {
+        max-width: 100%;
+    }
+
+    .places-list .place-image-wrap img {
+        max-height: 380px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .places-list .place-content {
+        gap: 0.5rem;
+    }
+
+    .places-list .place-image-wrap img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+    }
+
+    .places-list .place-image-wrap figcaption {
+        font-size: 0.8rem;
+    }
+
+    .places-list .place-description {
+        padding: 0.5rem 0 0;
+    }
+
+    .places-list .place-description h3 {
+        font-size: 1.45rem;
+    }
+
+    .places-list .place-description p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+}
+
+.info-box {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    border: 3px solid #ffcc00; 
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.15); 
+    text-align: center;
+}
+
+.info-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+.info-box p:last-child {
+    margin-bottom: 0 !important;
+}
+
+.info-box a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.info-box a:hover {
+    color: #ffcc00;
 }

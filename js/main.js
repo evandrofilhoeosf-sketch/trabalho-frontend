@@ -1,94 +1,183 @@
-// --- COMPORTAMENTO DO BOTÃO VOLTAR AO INÍCIO ---
 
-const botaoTopo = document.createElement('button');
+/* =========================================
+   MENU HAMBÚRGUER
+========================================= */
 
-botaoTopo.id = 'btnVoltarInicio';
-botaoTopo.title = 'Voltar ao início';
-botaoTopo.innerHTML = '↑';
+const menuToggle = document.getElementById('menuToggle');
+const sideNav = document.getElementById('sideNav');
 
-document.body.appendChild(botaoTopo);
+if (menuToggle && sideNav) {
 
-window.addEventListener('scroll', function() {
+    function fecharMenu() {
+        sideNav.classList.remove('menu-aberto');
 
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Mostra o botão ao rolar mais de 400px para baixo
-    if (currentScroll > 400) {
-        botaoTopo.style.display = 'block';
-    } else {
-        botaoTopo.style.display = 'none';
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
     }
 
-}, { passive: true });
+    menuToggle.addEventListener('click', function (event) {
+        event.stopPropagation();
 
-botaoTopo.addEventListener('click', function() {
+        const aberto = sideNav.classList.toggle('menu-aberto');
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        menuToggle.setAttribute('aria-expanded', String(aberto));
+        menuToggle.setAttribute(
+            'aria-label',
+            aberto ? 'Fechar menu' : 'Abrir menu'
+        );
     });
 
-});
+    sideNav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', fecharMenu);
+    });
+
+    document.addEventListener('click', function (event) {
+        if (
+            !sideNav.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+            fecharMenu();
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            fecharMenu();
+        }
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 600) {
+            fecharMenu();
+        }
+    });
+}
 
 
-// --- COMPORTAMENTO DA BARRA DE PESQUISA ---
+/* =========================================
+   PESQUISA EXPANSÍVEL
+========================================= */
 
 const searchForm = document.getElementById('searchForm');
 const searchToggle = document.getElementById('searchToggle');
 const searchInput = document.getElementById('searchInput');
 
-// Verifica se os elementos da pesquisa existem
 if (searchForm && searchToggle && searchInput) {
 
-    // Abrir e fechar pesquisa ao clicar na lupa
-    searchToggle.addEventListener('click', function() {
+    function fecharPesquisa() {
+        searchForm.classList.remove('search-open');
 
-        const aberto = searchForm.classList.toggle('search-open');
+        searchToggle.setAttribute('aria-expanded', 'false');
+        searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
+    }
 
-        searchToggle.setAttribute('aria-expanded', aberto);
+    searchToggle.addEventListener('click', function (event) {
+        event.stopPropagation();
 
+        const aberta = searchForm.classList.toggle('search-open');
+
+        searchToggle.setAttribute('aria-expanded', String(aberta));
         searchToggle.setAttribute(
             'aria-label',
-            aberto ? 'Fechar pesquisa' : 'Abrir pesquisa'
+            aberta ? 'Fechar pesquisa' : 'Abrir pesquisa'
         );
 
-        // Coloca o cursor no campo de pesquisa
-        if (aberto) {
+        if (aberta) {
             searchInput.focus();
         }
-
     });
 
-
-    // Fechar pesquisa ao clicar fora dela
-    document.addEventListener('click', function(event) {
-
+    document.addEventListener('click', function (event) {
         if (!searchForm.contains(event.target)) {
-
-            searchForm.classList.remove('search-open');
-
-            searchToggle.setAttribute('aria-expanded', 'false');
-
-            searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
-
+            fecharPesquisa();
         }
-
     });
 
-
-    // Fechar pesquisa ao pressionar ESC
-    document.addEventListener('keydown', function(event) {
-
+    document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
-
-            searchForm.classList.remove('search-open');
-
-            searchToggle.setAttribute('aria-expanded', 'false');
-
-            searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
-
+            fecharPesquisa();
         }
+    });
+}
 
+
+/* =========================================
+   BOTÃO VOLTAR AO INÍCIO
+========================================= */
+
+const botaoTopo = document.getElementById('btnVoltarInicio');
+
+if (botaoTopo) {
+
+    function atualizarBotaoTopo() {
+        botaoTopo.style.display =
+            window.scrollY > 400 ? 'block' : 'none';
+    }
+
+    window.addEventListener('scroll', atualizarBotaoTopo, {
+        passive: true
     });
 
+    atualizarBotaoTopo();
+
+    botaoTopo.addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+
+/* =========================================
+   CABEÇALHO REDUZIDO AO ROLAR
+========================================= */
+
+const cabecalho = document.querySelector('.site-header');
+
+if (cabecalho) {
+
+    function atualizarCabecalho() {
+
+        if (window.scrollY > 60) {
+            cabecalho.classList.add('header-reduzido');
+        } else {
+            cabecalho.classList.remove('header-reduzido');
+        }
+    }
+
+    window.addEventListener('scroll', atualizarCabecalho, {
+        passive: true
+    });
+
+    atualizarCabecalho();
+}
+
+// =========================================
+// RODAPÉ FIXO COM ESPAÇO AUTOMÁTICO
+// =========================================
+
+const rodape = document.querySelector('footer');
+
+if (rodape) {
+
+    function ajustarAlturaRodape() {
+        const altura = rodape.offsetHeight;
+
+        document.body.style.setProperty(
+            '--footer-height',
+            altura + 'px'
+        );
+    }
+
+    ajustarAlturaRodape();
+
+    window.addEventListener('resize', ajustarAlturaRodape);
+
+    window.addEventListener('load', ajustarAlturaRodape);
+
+    if (window.ResizeObserver) {
+        const observador = new ResizeObserver(ajustarAlturaRodape);
+        observador.observe(rodape);
+    }
 }

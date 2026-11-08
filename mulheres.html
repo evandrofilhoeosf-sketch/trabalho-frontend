@@ -3,73 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dEStino - Cultura</title>
+    <meta name="theme-color" content="#ffffff">
+    <title>dEStino - Home</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="site-header">
+
+    <!-- BOTÃO DO MENU MOBILE -->
+    <button class="menu-toggle" id="menuToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sideNav">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- LOGO E PESQUISA -->
     <div class="header-main-container">
-        <!-- Logo -->
         <a href="index.html" class="logo-center">
-            dES<span>tino</span>
+            d<span>ES</span>tinos
         </a>
-        
-        <!-- Barra de Pesquisa -->
-        <div class="header-search-bar">
-            <input type="text" placeholder="O que você está procurando?">
-            <button type="submit">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <form class="header-search-bar" id="searchForm" role="search">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Pesquisar destino..."
+                aria-label="Pesquisar destino"
+            >
+            <button
+                type="button"
+                id="searchToggle"
+                aria-label="Abrir pesquisa"
+                aria-expanded="false"
+            >
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
             </button>
-        </div>
+        </form>
     </div>
 
-    <!-- Menu de Tópicos Logo Abaixo -->
-    <nav class="side-nav">
+    <!-- MENU DE NAVEGAÇÃO -->
+    <nav class="side-nav" id="sideNav"
+         aria-label="Navegação principal">
+
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="mulheres.html">Mulheres que inspiram</a></li>
-            <li><a href="destinos_exp.html">Destinos e Experiências</a></li>
-            <li><a href="recomendacoes.html">Recomendações</a></li>
-            <li><a href="futuros_eventos.html">Futuros Eventos</a></li>
-            <li><a href="contatos.html">Contatos</a></li>
+            <li>
+                <a href="lugares.html">Lugares e Cultura</a>
+            </li>
+            <li>
+                <a href="onde-comer.html">Onde Comer?</a>
+            </li>
+            <li>
+                <a href="mulheres.html">Mulheres em Vitória</a>
+            </li>
+            <li>
+                <a href="eventos.html">Eventos</a>
+            </li>
+            <li>
+                <a href="contatos.html">Contatos</a>
+            </li>
         </ul>
+
     </nav>
+
 </header>
 
     <main>
-        <h1 class="page-title">História e Gastronomia</h1>
-        <p class="page-subtitle">A identidade capixaba é rica em tradições centenárias, fé, artesanato de paneleiras e sabores inconfundíveis.</p>
+        <section class="hero-section">
+            <h1 class="page-title">Conheça d<span>ES</span>tinos</h1>
 
-        <div class="grid-cards">
-            <article class="card">
-                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7" alt="Convento da Penha">
-                <div class="card-content">
-                    <h3>Convento da Penha</h3>
-                    <p>Santuário construído no alto de um penhasco em Vila Velha, marco histórico e religioso de 1558.</p>
-                </div>
-            </article>
+            <div class="page-subtitle">
+                <p>Vitória tem muito mais para viver do que a gente imagina.</p>
+                <p>Tem dia que tudo o que a gente precisa é de um lugar gostoso para tomar um café e um pão artesanal. Em outros, bate aquela vontade de se arrumar, chamar as amigas, escolher um restaurante diferente ou descobrir um cantinho da cidade que ainda não entrou na nossa lista.</p>
+                <p>E Vitória tem dessas surpresas. As ruas são cheias de história, os bares com sabores únicos e com bandas ao vivo, os sabores da nossa culinária e os espaços onde a arte encontra a cultura, a capital capixaba oferece programas para diferentes momentos, mas sem dúvida, você fará memórias inesquecíveis.</p>
+                <p>O dEStinos nasceu para reunir essas descobertas em um só lugar. Queremos mostrar a cidade, contar histórias de mulheres que empreende, apresentar estabelecimentos que conquistaram seu espaço em muitos corações, publicar eventos culturais e encontrar experiências que merecem ser compartilhadas.</p>
+                <p>Então, prepare a agenda, salve os endereços e convide alguém para ir com você. E, se preferir explorar tudo no seu próprio ritmo, também tem lugar para isso.</p>
+                <p>Vitória está cheia de histórias esperando por uma visita. Qual vai ser a nossa próxima parada? Escolha seu próximo destino!</p>
+            </div>
+        </section>
 
-            <article class="card">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Moqueca Capixaba">
-                <div class="card-content">
-                    <h3>Moqueca Capixaba</h3>
-                    <p>O prato típico mais famoso: peixe fresco com tomate, cebola, coentro e urucum, preparado na autêntica panela de barro.</p>
-                </div>
-            </article>
+        <section aria-label="Explore o dEStino">
+            <div class="grid-cards">
+                <article class="card">
+                    <h2 class="page-title2">LUGARES E CULTURA</h2>
+                    <img class="img" src="img/lugares.jpg" alt="Lugares e Cultura" loading="lazy">
+                    <div class="card-content">
+                        <h3>Venha conhecer a nossa majestosa riqueza cultural</h3>
+                        <p>Museus, construções históricas, parques, praias, exposições e espaços que ajudam a contar a história de Vitória.</p>
+                        <a href="lugares.html" class="btn">Ver mais</a>
+                    </div>
+                </article>
+            </div>
 
-            <article class="card">
-                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957" alt="Imigração e Festas">
-                <div class="card-content">
-                    <h3>Tradições e Festivais</h3>
-                    <p>Celebrações que misturam heranças pomeranas, italianas e açorianas presentes em todo o estado.</p>
-                </div>
-            </article>
-        </div>
+            <div class="grid-cards">
+                <article class="card">
+                    <h2 class="page-title2">ONDE COMER?</h2>
+                    <img class="img" src="img/onde-comer.jpg" alt="Onde Comer?" loading="lazy">
+                    <div class="card-content">
+                        <h3>Conheça os melhores restaurantes e bares da cidade</h3>
+                        <p>Restaurantes premiados, bares, cafés, padarias, confeitarias e lugares que transformam uma refeição em um bom programa.</p>
+                        <a href="onde-comer.html" class="btn">Ver mais</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="grid-cards">
+                <article class="card">
+                    <h2 class="page-title2">MULHERES EM VITÓRIA</h2>
+                    <img class="img" src="img/mulheres.jpg" alt="Mulheres em Vitória" loading="lazy">
+                    <div class="card-content">
+                        <h3>Veja agora essas mulheres inspiradoras do nosso estado</h3>
+                        <p>Empreendedoras, artesãs, artistas e mulheres que movimentam a economia e preservam a cultura capixaba.</p>
+                        <a href="mulheres.html" class="btn">Ver mais</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="grid-cards">
+                <article class="card">
+                    <h2 class="page-title2">EVENTOS</h2>
+                    <img class="img" src="img/eventos.jpg" alt="Eventos" loading="lazy">
+                    <div class="card-content">
+                        <h3>Aqui você encontra os melhores eventos da cidade</h3>
+                        <p>Shows, samba, pagode, feiras, oficinas, experiências com vinho, cerâmica e exposições para colocar no calendário.</p>
+                        <a href="eventos.html" class="btn">Ver mais</a>
+                    </div>
+                </article>
+            </div>
+
+        </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <p>&copy; 2026 dEStino. Todos os direitos reservados.</p>
     </footer>
+
     <script src="js/main.js"></script>
+    <button id="btnVoltarInicio" title="Voltar ao início" aria-label="Voltar ao início">↑</button>
 </body>
 </html>

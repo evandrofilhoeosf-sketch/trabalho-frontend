@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>dEStinos - Lugares e Cultura</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <!-- Botão do menu mobile -->
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="sideNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Logo e pesquisa -->
+        <div class="header-main-container">
+            <a href="index.html" class="logo-center">d<span>ES</span>tinos</a>
+
+            <form class="header-search-bar" id="searchForm" role="search">
+                <input type="search" id="searchInput"
+                       placeholder="Pesquisar destino..."
+                       aria-label="Pesquisar destino">
+                <button type="button" id="searchToggle"
+                        aria-label="Abrir pesquisa" aria-expanded="false">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <!-- Navegação principal -->
+        <nav class="side-nav" id="sideNav" aria-label="Navegação principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lugares.html" class="active" aria-current="page">Lugares e Cultura</a></li>
+                <li><a href="onde-comer.html">Onde Comer?</a></li>
+                <li><a href="mulheres.html">Mulheres em Vitória</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="contatos.html">Contatos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="places-main">
+        <section class="hero-section">
+            <h1 class="page-title">Lugares e Cultura</h1>
+
+            <div class="page-subtitle">
+                <p>Uma cidade, muitas formas de descobrir. Vitória é daquelas cidades que misturam paisagens bonitas, 
+                história e cultura de um jeito muito próprio. A poucos quilômetros de distância, a gente pode sair de uma construção histórica no Centro, passar por um museu, 
+                encontrar um parque cheio de verde e terminar o dia observando o movimento da baía. E o mais interessante é que cada região revela uma parte diferente da capital, 
+                preservam tradições antigas e espaços que mostram como a cidade continua produzindo arte e cultura.</p>
+
+                <p>Se você gosta de passeios que misturam conhecimento, paisagens e boas descobertas, separe um tempinho para conhecer esses endereços.</p>
+            </div>
+        </section>
+
+        <section class="places-list" aria-label="Lugares para conhecer">
+            <article class="place-item">
+                <h2 class="place-title">Palácio Anchieta</h2>
+                <div class="place-content">
+                    <figure class="place-image-wrap">
+                        <img src="img/palacio.jpg"
+                            alt="Palácio Anchieta"
+                            loading="lazy">
+                        <figcaption style="font-style: italic;">
+                            Palácio Anchieta, localizado na Cidade Alta, em Vitória.
+                        </figcaption>
+                    </figure>
+                    <div class="place-description">
+                        <h3>Uma viagem pela história capixaba</h3>
+                        <p>
+                            Na Cidade Alta, de frente para a Baía de Vitória, está um dos edifícios mais importantes da história do Espírito Santo: o Palácio Anchieta.
+                        </p>
+                        <p>
+                            Antes de ser sede do governo estadual, o prédio já abrigou o antigo Colégio de São Tiago, a construção começou no século XVI. Ao longo dos séculos, passou por incêndios, reformas e mudanças de função, acompanhando transformações importantes da história capixaba.
+                        </p>
+                        <p>
+                            Hoje tem mais do que só sua função institucional, o Palácio também recebe visitantes e atividades culturais. É uma oportunidade perfeita para conhecer um pouco mais sobre a formação do estado e observar de perto uma construção que atravessou diferentes períodos da nossa história.
+                        </p>
+                        <p>
+                            E tem um detalhe que torna o passeio ainda mais interessante: a localização. Depois da visita, vale caminhar pela Cidade Alta, observar os prédios antigos e aproveitar a vista da baía.
+                        </p>
+                        <p>
+                            Para quem gosta de fotografia, arquitetura e história, é uma parada que merece entrar no roteiro.
+                        </p>
+                        <div class="info-box">
+                            <p><strong>Local:</strong> Praça João Clímaco, Centro, Vitória.</p>
+                            <p><strong>Entrada:</strong> consultar as condições de visitação no canal oficial.</p>
+                            <p><strong>Horários:</strong> confirmar antes de sair, pois podem variar conforme a programação institucional e cultural.</p>
+                            <p><strong>Site oficial:</strong> <a href="https://vitoria.es.gov.br/semc/palacio-anchieta" target="_blank" rel="noopener noreferrer">Acesse o site oficial</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <section class="places-list" aria-label="Lugares para conhecer">
+            <article class="place-item">
+                <h2 class="place-title">Museu Solar Monjardim</h2>
+                <div class="place-content">
+                    <figure class="place-image-wrap">
+                        <img src="img/museu-solar-monjardim.jpg"
+                            alt="Museu Solar Monjardim"
+                            loading="lazy">
+                        <figcaption style="font-style: italic;">
+                            Museu Solar Monjardim, localizado em Santa Cecília, Vitória.
+                        </figcaption>
+                    </figure>
+                    <div class="place-description">
+                        <h3>Um pedaço do passado preservado</h3>
+                        <p>
+                            Imagine conhecer uma casa construída há mais de dois séculos e descobrir como era o cotidiano de uma família abastada no Espírito Santo de outros tempos. Essa é a proposta do Museu Solar Monjardim.
+                        </p>
+                        <p>
+                            O casarão começou a ser construído na década de 1780 e fazia parte da antiga Fazenda Jucutuquara. O espaço preserva características da arquitetura rural colonial e reúne objetos, móveis, documentos, fotografias, peças de arte sacra e outros elementos que ajudam a reconstruir hábitos e costumes de outra época.
+                        </p>
+                        <p>
+                            É um passeio interessante para quem gosta de história, arquitetura e daqueles lugares que fazem a gente desacelerar para observar os detalhes.
+                        </p>
+                        <div class="info-box">
+                            <p><strong>Local:</strong> Rua Professor Carlos Mattos, 33, Santa Cecília, Vitória.</p>
+                            <p><strong>Entrada:</strong> gratuita, conforme informações do Instituto Brasileiro de Museus.</p>
+                            <p><strong>Horários divulgados:</strong> segunda a sexta, das 8h às 16h30; sábados, domingos e feriados, das 13h às 17h. Confirme antes da visita.</p>
+                            <p><strong>Site oficial:</strong> <a href="https://www.gov.br/museus/pt-br/museus-ibram/museu-solar-monjardim" target="_blank" rel="noopener noreferrer">Acesse o site oficial</a></p>
+                        </div>
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="color: white;">
+                                Acesse o site oficial
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="place-item">
+                <h2 class="place-title">Lugar 3</h2>
+                <div class="place-content">
+                    <div class="place-image-wrap">
+                        <img src="img/lugar-3.jpg" alt="Imagem do terceiro lugar" loading="lazy">
+                    </div>
+                    <div class="place-description">
+                        <h3>Uma experiência para descobrir</h3>
+                        <p>Use este espaço para apresentar outro ponto turístico ou cultural. Explique por que ele merece uma visita e o que torna esse destino diferente.</p>
+                        <p>Se desejar, acrescente curiosidades, orientações para chegar até o local ou sugestões de atividades para fazer por lá.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="place-item">
+                <h2 class="place-title">Lugar 4</h2>
+                <div class="place-content">
+                    <div class="place-image-wrap">
+                        <img src="img/lugar-4.jpg" alt="Imagem do quarto lugar" loading="lazy">
+                    </div>
+                    <div class="place-description">
+                        <h3>Uma experiência para descobrir</h3>
+                        <p>Use este espaço para apresentar outro ponto turístico ou cultural. Explique por que ele merece uma visita e o que torna esse destino diferente.</p>
+                        <p>Se desejar, acrescente curiosidades, orientações para chegar até o local ou sugestões de atividades para fazer por lá.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="place-item">
+                <h2 class="place-title">Lugar 5</h2>
+                <div class="place-content">
+                    <div class="place-image-wrap">
+                        <img src="img/lugar-5.jpg" alt="Imagem do quinto lugar" loading="lazy">
+                    </div>
+                    <div class="place-description">
+                        <h3>Uma experiência para descobrir</h3>
+                        <p>Use este espaço para apresentar outro ponto turístico ou cultural. Explique por que ele merece uma visita e o que torna esse destino diferente.</p>
+                        <p>Se desejar, acrescente curiosidades, orientações para chegar até o local ou sugestões de atividades para fazer por lá.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="place-item">
+                <h2 class="place-title">Lugar 6</h2>
+                <div class="place-content">
+                    <div class="place-image-wrap">
+                        <img src="img/lugar-6.jpg" alt="Imagem do sexto lugar" loading="lazy">
+                    </div>
+                    <div class="place-description">
+                        <h3>Uma experiência para descobrir</h3>
+                        <p>Use este espaço para apresentar outro ponto turístico ou cultural. Explique por que ele merece uma visita e o que torna esse destino diferente.</p>
+                        <p>Se desejar, acrescente curiosidades, orientações para chegar até o local ou sugestões de atividades para fazer por lá.</p>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 dEStinos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <button id="btnVoltarInicio" title="Voltar ao início" aria-label="Voltar ao início">↑</button>
+</body>
+</html>
