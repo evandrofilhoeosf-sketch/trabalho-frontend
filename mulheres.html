@@ -4,153 +4,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
-    <title>dEStino - Home</title>
+    <title>dEStinos - Mulheres em Vitória</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Estilo exclusivo e dedicado para a página de Mulheres -->
+    <link rel="stylesheet" href="css/mulheres-exclusivo.css">
 </head>
 <body>
     <header class="site-header">
-
-    <!-- BOTÃO DO MENU MOBILE -->
-    <button class="menu-toggle" id="menuToggle"
-            aria-label="Abrir menu"
-            aria-expanded="false"
-            aria-controls="sideNav">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <!-- LOGO E PESQUISA -->
-    <div class="header-main-container">
-        <a href="index.html" class="logo-center">
-            d<span>ES</span>tinos
-        </a>
-        <form class="header-search-bar" id="searchForm" role="search">
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Pesquisar destino..."
-                aria-label="Pesquisar destino"
-            >
-            <button
-                type="button"
-                id="searchToggle"
-                aria-label="Abrir pesquisa"
+        <!-- Botão do menu mobile -->
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menu"
                 aria-expanded="false"
-            >
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-            </button>
-        </form>
-    </div>
+                aria-controls="sideNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <!-- MENU DE NAVEGAÇÃO -->
-    <nav class="side-nav" id="sideNav"
-         aria-label="Navegação principal">
+        <!-- Logo e pesquisa -->
+        <div class="header-main-container">
+            <a href="index.html" class="logo-center">d<span>ES</span>tinos</a>
 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li>
-                <a href="lugares.html">Lugares e Cultura</a>
-            </li>
-            <li>
-                <a href="onde-comer.html">Onde Comer?</a>
-            </li>
-            <li>
-                <a href="mulheres.html" class="active" aria-current="page">Mulheres em Vitória</a>
-            </li>
-            <li>
-                <a href="eventos.html">Eventos</a>
-            </li>
-            <li>
-                <a href="contatos.html">Contatos</a>
-            </li>
-        </ul>
+            <form class="header-search-bar" id="searchForm" role="search">
+                <input type="search" id="searchInput"
+                       placeholder="Pesquisar destino..."
+                       aria-label="Pesquisar destino">
+                <button type="button" id="searchToggle"
+                        aria-label="Abrir pesquisa" aria-expanded="false">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
 
-    </nav>
+        <!-- Navegação principal -->
+        <nav class="side-nav" id="sideNav" aria-label="Navegação principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lugares.html">Lugares e Cultura</a></li>
+                <li><a href="onde-comer.html">Onde Comer?</a></li>
+                <li><a href="mulheres.html" class="active" aria-current="page">Mulheres em Vitória</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="contatos.html">Contatos</a></li>
+            </ul>
+        </nav>
+    </header>
 
-</header>
-
-    <main>
+    <main class="women-main">
         <section class="hero-section">
-            <h1 class="page-title">Conheça d<span>ES</span>tinos</h1>
-
+            <h1 class="page-title">Mulheres em Vitória</h1>
             <div class="page-subtitle">
-                <p>Vitória tem muito mais para viver do que a gente imagina.</p>
-                <p>Tem dia que tudo o que a gente precisa é de um lugar gostoso para tomar um café e um pão artesanal. Em outros, bate aquela vontade de se arrumar, chamar as amigas, escolher um restaurante diferente ou descobrir um cantinho da cidade que ainda não entrou na nossa lista.</p>
-                <p>E Vitória tem dessas surpresas. As ruas são cheias de história, os bares com sabores únicos e com bandas ao vivo, os sabores da nossa culinária e os espaços onde a arte encontra a cultura, a capital capixaba oferece programas para diferentes momentos, mas sem dúvida, você fará memórias inesquecíveis.</p>
-                <p>O dEStinos nasceu para reunir essas descobertas em um só lugar. Queremos mostrar a cidade, contar histórias de mulheres que empreende, apresentar estabelecimentos que conquistaram seu espaço em muitos corações, publicar eventos culturais e encontrar experiências que merecem ser compartilhadas.</p>
-                <p>Então, prepare a agenda, salve os endereços e convide alguém para ir com você. E, se preferir explorar tudo no seu próprio ritmo, também tem lugar para isso.</p>
-                <p>Vitória está cheia de histórias esperando por uma visita. Qual vai ser a nossa próxima parada? Escolha seu próximo destino!</p>
+                <p>Por trás de cada negócio, existe uma história.</p>
+                <p>Uma cidade evoluída é construída por mulheres que abrem portas e caminhos, criam oportunidades, preservam cultura, transformam ideias e trabalhos em obras de arte.</p>
+                <p>Algumas estão em restaurantes, na cozinha preparando provavelmente a melhor comida que já experimentou... Mantêm vivos conhecimentos transmitidos por gerações. Todas as mulheres produzem arte e Vitória é um ótimo lugar para provar isso. Conheça abaixo cada uma dessas histórias.</p>
             </div>
         </section>
 
-        <section aria-label="Explore o dEStino">
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">LUGARES E CULTURA</h2>
-                    <img class="img" src="img/lugares.jpg" alt="Lugares e Cultura" loading="lazy">
-                    <div class="card-content">
-                        <h3>Venha conhecer a nossa majestosa riqueza cultural</h3>
-                        <p>Museus, construções históricas, parques, praias, exposições e espaços que ajudam a contar a história de Vitória.</p>
-                        <a href="lugares.html" class="btn">Ver mais</a>
+        <!-- SEÇÃO 1: AS PIONEIRAS NA HISTÓRIA DE VITÓRIA -->
+        <section class="women-mosaic-container" aria-label="As Pioneiras na História de Vitória">
+            <h2 class="related-title" style="margin-top: 1rem;">As Pioneiras na História de Vitória</h2>
+            
+            <div class="mosaic-grid">
+                <!-- Card Maria Ortiz -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2" alt="Maria Ortiz" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Século XVII — Heroína Capixaba</span>
+                        <h3>Maria Ortiz</h3>
+                        <p>Considerada uma das primeiras heroínas do estado, ela desempenhou um papel crucial em 1625. Quando invasores holandeses tentavam subir a ladeira que dava acesso ao centro de Vitória, a jovem Maria Ortiz encorajou os vizinhos e jogou água fervente da janela de sua casa sobre os soldados, ajudando a conter o avanço inimigo. Hoje, a famosa Escadaria Maria Ortiz no Centro Histórico homenageia sua coragem.</p>
+                    </div>
+                </article>
+
+                <!-- Card Maria Saraiva -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04" alt="Maria Saraiva" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Século XIX — Tradição e Empreendedorismo</span>
+                        <h3>Maria Saraiva</h3>
+                        <p>Mulher negra e ex-escravizada, Maria Saraiva foi uma das figuras populares mais tradicionais de Vitória. Tornou-se uma doceira e empreendedora de grande sucesso na capital, além de ser uma fervorosa devota e articuladora da festa de São Benedito, quebrando barreiras econômicas e sociais na sua época.</p>
                     </div>
                 </article>
             </div>
 
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">ONDE COMER?</h2>
-                    <img class="img" src="img/onde-comer.jpg" alt="Onde Comer?" loading="lazy">
-                    <div class="card-content">
-                        <h3>Conheça os melhores restaurantes e bares da cidade</h3>
-                        <p>Restaurantes premiados, bares, cafés, padarias, confeitarias e lugares que transformam uma refeição em um bom programa.</p>
-                        <a href="onde-comer.html" class="btn">Ver mais</a>
+            <!-- Card Carmélia (Destaque) -->
+            <article class="mosaic-featured" style="margin-top: 2rem;">
+                <div class="mosaic-img-box">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Carmélia Maria de Souza" loading="lazy">
+                </div>
+                <div class="mosaic-text-box">
+                    <span class="mosaic-badge">Século XX — Intelectual e Cronista</span>
+                    <h2>Carmélia Maria de Souza</h2>
+                    <p>Cronista, jornalista, mulher negra e lésbica, Carmélia foi uma intelectual autodidata que retratou o cotidiano de Vitória com sensibilidade única. Conhecida como a "cronista de Vitória", ela marcou a literatura capixaba e hoje dá nome ao Centro Cultural Carmélia Maria de Souza, no bairro Mario Cypreste.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- SEÇÃO 2: HISTÓRIAS VIVAS DAS COMUNIDADES ATUAIS -->
+        <section class="women-mosaic-container" aria-label="Histórias Vivas das Comunidades" style="margin-top: 4rem;">
+            <h2 class="related-title">Histórias Vivas das Comunidades Atuais</h2>
+            
+            <div class="mosaic-grid">
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e" alt="Mulheres do Bairro Engenharia" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Documentário Local</span>
+                        <h3>As Mulheres do Bairro Engenharia</h3>
+                        <p>O documentário local “Dona's” registra histórias de moradoras que participaram da formação da comunidade e das reivindicações por infraestrutura, como água, saneamento e eletricidade. A produção ajuda a preservar a memória de mulheres que participaram da construção do bairro.</p>
+                    </div>
+                </article>
+
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232" alt="Jucileia Santos" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Superação e Redes de Apoio</span>
+                        <h3>Jucileia Santos</h3>
+                        <p>Reportagens do projeto Todas Elas, de A Gazeta, mostram trajetórias de mulheres que encontraram em iniciativas de apoio e capacitação caminhos para conquistar autonomia financeira, como a inspiradora trajetória de Jucileia Santos.</p>
                     </div>
                 </article>
             </div>
+        </section>
 
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">MULHERES EM VITÓRIA</h2>
-                    <img class="img" src="img/mulheres.jpg" alt="Mulheres em Vitória" loading="lazy">
-                    <div class="card-content">
-                        <h3>Veja agora essas mulheres inspiradoras do nosso estado</h3>
-                        <p>Empreendedoras, artesãs, artistas e mulheres que movimentam a economia e preservam a cultura capixaba.</p>
-                        <a href="mulheres.html" class="btn">Ver mais</a>
+        <!-- SEÇÃO 3: AS PANELEIRAS DE GOIABEIRAS -->
+        <section class="women-mosaic-container" aria-label="As Paneleiras de Goiabeiras" style="margin-top: 4rem;">
+            <h2 class="related-title">As Paneleiras de Goiabeiras: um saber que atravessa gerações</h2>
+            
+            <article class="mosaic-featured">
+                <div class="mosaic-img-box">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Paneleiras de Goiabeiras" loading="lazy">
+                </div>
+                <div class="mosaic-text-box">
+                    <span class="mosaic-badge">Patrimônio Cultural do Brasil</span>
+                    <h2>Tradição, Barro e Resistência</h2>
+                    <p>A história das Paneleiras de Goiabeiras é uma das expressões culturais mais importantes do Espírito Santo. Há mais de 400 anos, o conhecimento sobre a produção artesanal das panelas de barro é transmitido entre gerações. A técnica, de matriz indígena, envolve a retirada do barro no Vale do Mulembá, modelagem manual, secagem, polimento com seixos rolados, queima a céu aberto e a aplicação do tanino.</p>
+                    <p>Em 2002, o ofício foi registrado pelo Iphan como Patrimônio Cultural do Brasil. O galpão é um espaço para conhecer de perto esse trabalho e compreender que cada panela carrega um saber transmitido entre gerações.</p>
+                    <div class="info-card" style="margin-top: 1rem; color: var(--text-primary); padding: 1rem; background: #fff; border-radius: 4px;">
+                        <p><strong>Local:</strong> Galpão das Paneleiras, Rua Leopoldo Gomes Salles, 55, Goiabeiras, Vitória.</p>
+                        <p><strong>Horários:</strong> Segunda a sábado, das 8h às 18h30; domingos, das 8h às 15h.</p>
+                        <p><strong>Telefone:</strong> (27) 3327-0519.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card Berenice Correia -->
+            <article class="mosaic-card" style="margin-top: 2rem;">
+                <div class="mosaic-card-img">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="Berenice Correia" loading="lazy">
+                </div>
+                <div class="mosaic-card-content">
+                    <span class="mosaic-tag">Continuidade e Liderança</span>
+                    <h3>Berenice Correia</h3>
+                    <p>Representante da quarta geração de paneleiras de sua família e presidente da Associação das Paneleiras de Goiabeiras. Berenice está à frente do espaço que reúne 68 artesãos e mantém viva a tradição oferecendo oficinas de modelagem e troca de saberes, unindo resistência, cultura e organização coletiva.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- SEÇÃO 4: EMPREENDEDORISMO E INOVAÇÃO -->
+        <section class="women-mosaic-container" aria-label="Empreendedorismo e Inovação" style="margin-top: 4rem;">
+            <h2 class="related-title">Empreendedorismo, Ciência e Tecnologia</h2>
+            
+            <div class="mosaic-grid">
+                <!-- Luciana Jucá -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="Luciana Jucá" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Panificação Artesanal</span>
+                        <h3>Luciana Jucá</h3>
+                        <p>A história da Jucá Padaria Artesanal destaca o empreendedorismo feminino na gastronomia. Luciana está associada à construção da marca, que se destacou pelo trabalho com pães artesanais e fermentação natural, exigindo conhecimento técnico, planejamento e cuidado em cada etapa.</p>
+                    </div>
+                </article>
+
+                <!-- Flora Gomes Machado -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="Flora Gomes Machado" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Ciência e Cosméticos</span>
+                        <h3>Flora Gomes Machado</h3>
+                        <p>Fundadora da DIV Cosmetics. Engenheira química, ex-professora universitária, começou a testar formulações em casa durante a pandemia, criando xampus em barra e produtos veganos. Em 2026, conquistou o 2º lugar na categoria Pequenos Negócios do Prêmio Sebrae Mulher de Negócios no ES.</p>
+                    </div>
+                </article>
+
+                <!-- Margaret Siqueira -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Margaret Siqueira" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Área da Beleza</span>
+                        <h3>Margaret Siqueira</h3>
+                        <p>Fundadora do Instituto Capilare. Em 2010, identificou que muitas mulheres não se sentiam representadas por um mercado voltado a cabelos lisos e loiros. Especializou-se em transição capilar e cuidados com cabelos naturais, fundando o instituto em 2017. Em 2026, ficou entre as três primeiras colocadas na categoria Pequenos Negócios do Prêmio Sebrae Mulher de Negócios no ES.</p>
+                    </div>
+                </article>
+
+                <!-- Rayssa Mendes -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-img">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1" alt="Rayssa Mendes" loading="lazy">
+                    </div>
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Tecnologia e Impacto Social</span>
+                        <h3>Rayssa Mendes</h3>
+                        <p>Cofundadora e CEO da Manacá Tecnologias Sociais. Com formação em Ciências Sociais e História, criou ferramentas como a plataforma Flora (mensuração de impacto) e Saira (monitoramento de resíduos por visão computacional). Em 2026, conquistou o 1º lugar na categoria Ciência e Tecnologia do Prêmio Sebrae Mulher de Negócios no ES.</p>
                     </div>
                 </article>
             </div>
+        </section>
 
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">EVENTOS</h2>
-                    <img class="img" src="img/eventos.jpg" alt="Eventos" loading="lazy">
-                    <div class="card-content">
-                        <h3>Aqui você encontra os melhores eventos da cidade</h3>
-                        <p>Shows, samba, pagode, feiras, oficinas, experiências com vinho, cerâmica e exposições para colocar no calendário.</p>
-                        <a href="eventos.html" class="btn">Ver mais</a>
+        <!-- SEÇÃO 5: ARTE, FOTOGRAFIA E CULTURA -->
+        <section class="women-mosaic-container" aria-label="Arte e Cultura" style="margin-top: 4rem;">
+            <h2 class="related-title">Mulheres na Arte, Fotografia e Cultura</h2>
+            
+            <article class="mosaic-featured">
+                <div class="mosaic-img-box">
+                    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e" alt="Mostra Turmalina no MUCANE" loading="lazy">
+                </div>
+                <div class="mosaic-text-box">
+                    <span class="mosaic-badge">Mostra Turmalina no MUCANE</span>
+                    <h2>O Protagonismo na Arte</h2>
+                    <p>O protagonismo feminino aparece nos espaços culturais da cidade. A arte traz história e é a primeira forma de comunicação que existiu. Em outubro e novembro de 2026, o MUCANE recebe a <strong>Mostra Turmalina de Mulheres Negras na Fotografia</strong>, reunindo trabalhos de 12 fotógrafas selecionadas para ampliar o espaço da produção artística, da memória e da estética de mulheres negras.</p>
+                    <div class="info-card" style="margin-top: 1rem; color: var(--text-primary); padding: 1rem; background: #fff; border-radius: 4px;">
+                        <p><strong>Local:</strong> Museu Capixaba do Negro (MUCANE), Av. República, 121, Centro, Vitória.</p>
+                        <p><strong>Período:</strong> 20 de outubro a 20 de novembro de 2026.</p>
+                        <p><strong>Horários:</strong> Terça a sexta, das 9h às 17h; sábado, das 9h às 13h (Entrada Gratuita).</p>
+                        <p><strong>Tel:</strong> (27) 3235-2672.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SEÇÃO 6: PROJETOS E REDES DE APOIO -->
+        <section class="women-mosaic-container" aria-label="Projetos e Redes de Apoio" style="margin-top: 4rem;">
+            <h2 class="related-title">Projetos e Redes de Apoio para Mulheres</h2>
+            
+            <div class="mosaic-grid">
+                <!-- Projeto Força Feminina -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Defesa Pessoal e Autoestima</span>
+                        <h3>Força Feminina</h3>
+                        <p>Idealizado pela mestra de taekwondo <strong>Manuela Feliz</strong>, combina aulas de defesa pessoal com rodas de conversa sobre direitos, prevenção da violência e fortalecimento da autoestima para mulheres cis e trans a partir de 18 anos.</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.9rem;"><strong>Contato / WhatsApp:</strong> (27) 98884-6588</p>
+                    </div>
+                </article>
+
+                <!-- Projeto MADRES -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Encontros e Conexão</span>
+                        <h3>MADRES</h3>
+                        <p>Projeto de encontros e eventos voltados ao público feminino. A proposta é criar espaços para socialização, música, gastronomia e troca de experiências. Utiliza espaços como o Galeria Espaço Ladeira, no Centro Histórico.</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.9rem;"><strong>Instagram:</strong> @madresbr</p>
+                    </div>
+                </article>
+
+                <!-- Projeto Todas Elas -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Liderança e Trabalho</span>
+                        <h3>Todas Elas</h3>
+                        <p>Iniciativa da Rede Gazeta com apoio do Sebrae-ES, reunindo reportagens e encontros presenciais para discutir o protagonismo feminino, os desafios no mercado de trabalho e a presença de mulheres em posições de liderança (Sede na Rua Chafic Murad, 902, Bento Ferreira).</p>
+                    </div>
+                </article>
+
+                <!-- Mulher Negra Cidadã -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Capacitação Pública</span>
+                        <h3>Mulher Negra Cidadã</h3>
+                        <p>Iniciativa da Secretaria Municipal de Cidadania, Direitos Humanos e Trabalho (SEMCID) com cursos profissionalizantes gratuitos para moradoras de Vitória, com reserva de vagas para mulheres negras ampliarem seu acesso ao mercado.</p>
+                    </div>
+                </article>
+
+                <!-- Mulher Viva + -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Proteção e Acolhimento</span>
+                        <h3>Programa Mulher Viva + e Centros Margaridas</h3>
+                        <p>Coordenado pela Secretaria Estadual das Mulheres (SESM), reúne ações de proteção, atendimento psicossocial e orientação jurídica especializada através dos Centros Margaridas (Av. Nossa Senhora da Penha, 1.433, Santa Lúcia).</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.9rem;"><strong>Tel:</strong> (27) 3636-9317</p>
+                    </div>
+                </article>
+
+                <!-- Biovitalité Cursos -->
+                <article class="mosaic-card">
+                    <div class="mosaic-card-content">
+                        <span class="mosaic-tag">Autocuidado e Skincare</span>
+                        <h3>Biovitalité Cursos</h3>
+                        <p>Oferece atividades e cursos práticos de estética e cuidados com a pele, incluindo workshops de criação de cosméticos personalizados (Rua José Farias, 160, Santa Luíza).</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.9rem;"><strong>WhatsApp:</strong> (27) 99787-2018 | <strong>Tel:</strong> (27) 3101-8228</p>
                     </div>
                 </article>
             </div>
+        </section>
 
+        <!-- SEÇÃO DE RECOMENDAÇÕES NO RODAPÉ -->
+        <section class="related-section" aria-label="Veja mais destinos">
+            <h2 class="related-title">VEJA MAIS DO NOSSO SITE</h2>
+            
+            <div class="related-grid">
+                <a href="lugares.html" class="related-card">
+                    <div class="related-img-wrap">
+                        <img src="img/lugares.jpg" alt="Lugares e Cultura" loading="lazy">
+                    </div>
+                    <div class="related-card-content">
+                        <h3>Lugares e Cultura</h3>
+                        <p>Explore os principais pontos turísticos e históricos de Vitória.</p>
+                    </div>
+                </a>
+
+                <a href="onde-comer.html" class="related-card">
+                    <div class="related-img-wrap">
+                        <img src="img/onde-comer.jpg" alt="Onde Comer em Vitória" loading="lazy">
+                    </div>
+                    <div class="related-card-content">
+                        <h3>Onde Comer?</h3>
+                        <p>Descubra os melhores sabores e pratos típicos capixabas.</p>
+                    </div>
+                </a>
+
+                <a href="eventos.html" class="related-card">
+                    <div class="related-img-wrap">
+                        <img src="img/eventos.jpg" alt="Eventos em Vitória" loading="lazy">
+                    </div>
+                    <div class="related-card-content">
+                        <h3>Eventos</h3>
+                        <p>Fique por dentro da programação cultural e festividades locais.</p>
+                    </div>
+                </a>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 dEStino. Todos os direitos reservados.</p>
+        <p>&copy; 2026 dEStinos. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/main.js"></script>

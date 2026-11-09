@@ -88,7 +88,10 @@ if (searchForm && searchToggle && searchInput) {
     });
 
     document.addEventListener('click', function (event) {
-        if (!searchForm.contains(event.target)) {
+        if (
+            !searchForm.contains(event.target) &&
+            !searchToggle.contains(event.target)
+        ) {
             fecharPesquisa();
         }
     });

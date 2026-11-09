@@ -266,10 +266,10 @@ main {
     display: block;
     flex: 1 0 auto;
     width: 100%;
-    max-width: 2000px;
+    max-width: 1100px;
     min-height: 0;
     margin: 0 auto;
-    padding: 4rem 3rem;
+    padding: 3.5rem 1.5rem;
     background: var(--accent-es1);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
@@ -421,7 +421,7 @@ h1, h2, h3, .section-heading {
 
 .places-unified-card {
     width: 100%;
-    max-width: 1400px;
+    max-width: 100%; 
     margin: 0 auto;
     padding: 2.5rem 2rem;
     background: var(--card-bg);
@@ -553,7 +553,7 @@ h1, h2, h3, .section-heading {
    ===================================================== */
 .related-section {
     width: 100%;
-    max-width: 1400px;
+    max-width: 100%;
     margin: 5rem auto 2rem auto;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -681,7 +681,7 @@ footer {
     flex-direction: column;
     gap: 3rem;
     width: 100%;
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -854,9 +854,18 @@ footer {
         background-size: cover;
     }
 
+    .site-header.header-reduzido .menu-toggle span {
+        width: 20px !important;
+        height: 2px !important;
+        margin: 3.5px 0 !important;
+    }
+
     .site-header {
-        position: relative;
+        position: sticky !important; /* Força o cabeçalho a ficar grudado no topo */
+        top: 0 !important;
+        z-index: 3000;
         padding: 1rem;
+        background: #ffffff;
     }
 
     .menu-toggle {
@@ -984,5 +993,222 @@ footer {
 
     .related-img-wrap {
         height: 140px;
+    }
+
+    /* Mantém a barra de pesquisa visível e ajustada quando o header for reduzido no scroll */
+    .site-header.header-reduzido .header-search-bar {
+        top: 0.35rem !important;
+        width: 34px !important;
+        height: 30px !important;
+    }
+
+    .site-header.header-reduzido .header-search-bar button {
+        flex: 0 0 34px !important;
+        width: 34px !important;
+        min-width: 34px !important;
+        height: 30px !important;
+    }
+
+    .site-header.header-reduzido .header-search-bar.search-open {
+        width: calc(100% - 2rem) !important;
+        right: 1rem !important;
+        left: 1rem !important;
+        height: 38px !important;
+        z-index: 3005;
+    }
+
+    .site-header.header-reduzido .header-search-bar.search-open input {
+        width: auto !important;
+        padding: 0 0.8rem !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        font-size: 0.9rem !important;
+    }
+
+    .header-search-bar.search-open {
+        transition: none !important;
+    }
+}
+
+/* =====================================================
+   LAYOUT EXCLUSIVO: PÁGINA MULHERES EM VITÓRIA
+   ===================================================== */
+
+.women-mosaic-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Destaque Principal (Capa) */
+.mosaic-featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mosaic-img-box {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+}
+
+.mosaic-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.mosaic-featured:hover .mosaic-img-box img {
+    transform: scale(1.03);
+}
+
+.mosaic-text-box {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--card-bg);
+    color: var(--white-color);
+}
+
+.mosaic-badge {
+    display: inline-block;
+    background: var(--white-color);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.mosaic-text-box h2 {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--white-color);
+}
+
+.mosaic-text-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mosaic-btn {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.7rem 1.4rem;
+    background: var(--white-color);
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.mosaic-btn:hover {
+    background: var(--accent-es1);
+    color: var(--white-color);
+}
+
+/* Grade Secundária */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.mosaic-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.mosaic-card:hover {
+    transform: translateY(-4px);
+}
+
+.mosaic-card-img {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.mosaic-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.mosaic-card:hover .mosaic-card-img img {
+    transform: scale(1.05);
+}
+
+.mosaic-card-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.mosaic-tag {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+.mosaic-card-content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--white-color);
+}
+
+.mosaic-card-content p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsividade para Tablets e Celulares */
+@media (max-width: 900px) {
+    .mosaic-featured {
+        grid-template-columns: 1fr;
+    }
+    .mosaic-img-box {
+        height: 280px;
+    }
+    .mosaic-text-box {
+        padding: 2rem 1.5rem;
+    }
+    .mosaic-grid {
+        grid-template-columns: 1fr;
     }
 }
