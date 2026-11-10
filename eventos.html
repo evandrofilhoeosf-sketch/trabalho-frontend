@@ -4,58 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
-    <title>dEStino - Home</title>
+    <title>dEStinos - Eventos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="site-header">
-
-    <!-- BOTÃO DO MENU MOBILE -->
-    <button class="menu-toggle" id="menuToggle"
-            aria-label="Abrir menu"
-            aria-expanded="false"
-            aria-controls="sideNav">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <!-- LOGO E PESQUISA -->
-    <div class="header-main-container">
-        <a href="index.html" class="logo-center">
-            d<span>ES</span>tinos
-        </a>
-        <form class="header-search-bar" id="searchForm" role="search">
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Pesquisar destino..."
-                aria-label="Pesquisar destino"
-            >
-            <button
-                type="button"
-                id="searchToggle"
-                aria-label="Abrir pesquisa"
+        <!-- Botão do menu mobile -->
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menu"
                 aria-expanded="false"
-            >
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-            </button>
-        </form>
-    </div>
+                aria-controls="sideNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
+        <!-- Logo e pesquisa -->
+        <div class="header-main-container">
+            <a href="index.html" class="logo-center">d<span>ES</span>tinos</a>
+
+            <form class="header-search-bar" id="searchForm" role="search">
+                <input type="search" id="searchInput"
+                       placeholder="Pesquisar destino..."
+                       aria-label="Pesquisar destino">
+                <button type="button" id="searchToggle"
+                        aria-label="Abrir pesquisa" aria-expanded="false">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <!-- Navegação principal -->
         <nav class="side-nav" id="sideNav" aria-label="Navegação principal">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -67,77 +52,442 @@
                 <li><a href="contatos.html">Contatos</a></li>
             </ul>
         </nav>
+    </header>
 
-</header>
-
-    <main>
+    <main class="events-main">
         <section class="hero-section">
-            <h1 class="page-title">Conheça d<span>ES</span>tinos</h1>
+            <h1 class="page-title">Eventos</h1>
 
             <div class="page-subtitle">
-                <p>Vitória tem muito mais para viver do que a gente imagina.</p>
-                <p>Tem dia que tudo o que a gente precisa é de um lugar gostoso para tomar um café e um pão artesanal. Em outros, bate aquela vontade de se arrumar, chamar as amigas, escolher um restaurante diferente ou descobrir um cantinho da cidade que ainda não entrou na nossa lista.</p>
-                <p>E Vitória tem dessas surpresas. As ruas são cheias de história, os bares com sabores únicos e com bandas ao vivo, os sabores da nossa culinária e os espaços onde a arte encontra a cultura, a capital capixaba oferece programas para diferentes momentos, mas sem dúvida, você fará memórias inesquecíveis.</p>
-                <p>O dEStinos nasceu para reunir essas descobertas em um só lugar. Queremos mostrar a cidade, contar histórias de mulheres que empreende, apresentar estabelecimentos que conquistaram seu espaço em muitos corações, publicar eventos culturais e encontrar experiências que merecem ser compartilhadas.</p>
-                <p>Então, prepare a agenda, salve os endereços e convide alguém para ir com você. E, se preferir explorar tudo no seu próprio ritmo, também tem lugar para isso.</p>
-                <p>Vitória está cheia de histórias esperando por uma visita. Qual vai ser a nossa próxima parada? Escolha seu próximo destino!</p>
+                <p>A cidade não para e não queremos perder nada.</p>
+                <p>Tem exposição para visitar, feira para conhecer, música ao vivo, oficina para experimentar e encontro que pode render novas amizades.</p>
+                <p>A agenda do dEStinos reúne atividades culturais, gastronômicas e experiências que movimentam Vitória. Como a programação muda, cada evento deve ser conferido nos canais oficiais antes da publicação.</p>
             </div>
         </section>
 
-        <section aria-label="Explore o dEStino">
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">LUGARES E CULTURA</h2>
-                    <img class="img" src="img/lugares.jpg" alt="Lugares e Cultura" loading="lazy">
-                    <div class="card-content">
-                        <h3>Venha conhecer a nossa majestosa riqueza cultural</h3>
-                        <p>Museus, construções históricas, parques, praias, exposições e espaços que ajudam a contar a história de Vitória.</p>
-                        <a href="lugares.html" class="btn">Ver mais</a>
-                    </div>
-                </article>
+        <!-- LAYOUT DE AGENDA / LINHA DO TEMPO COM IMAGEM -->
+        <section class="events-timeline-container" aria-label="Agenda de eventos">
+            
+            <!-- SEPARADOR / MÊS -->
+            <div class="timeline-section-title">
+                <h2>NOVEMBRO DE 2026</h2>
             </div>
 
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">ONDE COMER?</h2>
-                    <img class="img" src="img/onde-comer.jpg" alt="Onde Comer?" loading="lazy">
-                    <div class="card-content">
-                        <h3>Conheça os melhores restaurantes e bares da cidade</h3>
-                        <p>Restaurantes premiados, bares, cafés, padarias, confeitarias e lugares que transformam uma refeição em um bom programa.</p>
-                        <a href="onde-comer.html" class="btn">Ver mais</a>
+            <!-- EVENTO 1 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">06 a 08</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/fest-gastronomia.jpg" alt="Fest Gastronomia 2026" loading="lazy">
+                        <span class="timeline-badge">Gastronomia & Experiências</span>
                     </div>
-                </article>
+                    <div class="timeline-text-content">
+                        <h2>Fest Gastronomia 2026</h2>
+                        <p class="timeline-highlight">O Shopping Vitória recebe três dias de experiências gastronômicas, música, aulas-show e atividades para diferentes públicos.</p>
+                        <p>A programação inclui restaurantes da Grande Vitória, apresentações musicais, DJs, aulas com chefs convidados e uma experiência sobre vinhos com a sommelière Nádia Alcade.</p>
+                        <p>No dia 6, também acontece a entrega dos troféus do Prêmio HZ Gastrô 2026, que reconheceu estabelecimentos escolhidos pelo público.</p>
+                        <p>É uma oportunidade para conhecer novos sabores, acompanhar demonstrações gastronômicas e descobrir mais sobre a cena culinária capixaba.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Arena SV, Shopping Vitória, Enseada do Suá.</p>
+                            <p><strong>Entrada:</strong> gratuita.</p>
+                            <p><strong>Horários divulgados:</strong> sexta, das 17h às 23h; sábado e domingo, das 11h às 23h.</p>
+                            <p><strong>Atenção:</strong> as aulas e atividades estão sujeitas à lotação.</p>
+                            <p><strong>Telefone:</strong> (27) 3335-1000 — SAC do Shopping Vitória.</p>
+                            <p><strong>WhatsApp:</strong> (27) 99867-0844.</p>
+                            <p><strong>Instagram:</strong> @festgastronomia</p>
+                            <p><strong>Site Oficial:</strong> <a href="https://www.agazeta.com.br/hz/cultura/fest-gastronomia-tera-ubando-com-andre-prando-e-aula-show-de-nadia-alcalde-e-orlando-nardi-neste-domingo-8-1126" target="_blank" rel="noopener noreferrer">Acesse o site oficial</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 2 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">07 a 29</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/mucane-novembro-negro.jpg" alt="Novembro Negro no MUCANE" loading="lazy">
+                        <span class="timeline-badge">Cultura & Memória</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Novembro Negro no MUCANE</h2>
+                        <p class="timeline-highlight">O Museu Capixaba do Negro recebe uma programação especial com oficinas, rodas de conversa, palestras, contação de histórias e apresentações artísticas.</p>
+                        <p>A agenda aborda temas como ancestralidade, literatura negra, fotografia, afroempreendedorismo e patrimônio cultural afro-brasileiro.</p>
+                        <p>Entre os destaques estão:</p>
+                        <p>• Kikada Festival, nos dias 11 e 12 de 19h às 21h.</p>
+                        <p>• Baile Charme do MUCANE, no dia 13 a partir das 19h.</p>
+                        <p>• Atividades sobre trajetórias de mulheres negras, entre os dias 17 e 19 a partir das 19h.</p>
+                        <p>• Programação especial do Dia da Consciência Negra, em 20 de novembro;</p>
+                        <p>• 9º Festival da Cultura Negra, nos dias 28 e 29 a partir das 9h até às 18h, com feira empreendedora, desfile e apresentações musicais.</p>
+                        <p>Nos dias 28 e 29, o festival encerra o mês com feira empreendedora, desfile de indumentárias afro e apresentação das Divas do Samba.</p>
+                        <p>É uma programação que reúne cultura, memória, música e empreendedorismo, valorizando diferentes expressões da população negra.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> MUCANE, Avenida República, 121, Centro Histórico.</p>
+                            <p><strong>Entrada:</strong> gratuita, sujeita à capacidade do espaço.</p>
+                            <p><strong>Telefone:</strong> (27) 3235-2672.</p>
+                            <p><strong>Programação:</strong> <a href="https://www.vitoria.es.gov.br/noticia/novembro-negro-ancestralidade-e-arte-dao-o-tom-da-programacao-do-mucane-57622" target="_blank" rel="noopener noreferrer">Acesse a programação completa</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 3 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">11</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/forum-mulher.jpg" alt="Fórum Mulher" loading="lazy">
+                        <span class="timeline-badge">Empreendedorismo & Liderança</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Fórum Mulher: Sustentabilidade Além do Verde</h2>
+                        <p class="timeline-highlight">Um encontro voltado a mulheres que empreendem, criam, lideram e buscam novas oportunidades para seus negócios.</p>
+                        <p>A proposta é discutir sustentabilidade para além da questão ambiental, incluindo gestão, relações, oportunidades e desenvolvimento de negócios.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Assembleia Legislativa do Espírito Santo, Avenida Américo Buaiz, 205, Praia do Suá.</p>
+                            <p><strong>Horário divulgado:</strong> das 16h às 21h.</p>
+                            <p><strong>Inscrições:</strong> <a href="https://www.sympla.com.br/evento/lgc/3597215" target="_blank" rel="noopener noreferrer">Página de Inscrição Sympla</a></p>
+                            <p><strong>Site Oficial:</strong> <a href="https://www.sympla.com.br/evento/forum-mulher-sustentabilidade-alem-do-verde/3597215?referrer=www.google.com&referrer=www.google.com" target="_blank" rel="noopener noreferrer">Acesse o site oficial</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 4 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">14 e 22</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/oficina-ceramica.jpg" alt="Oficinas de Cerâmica" loading="lazy">
+                        <span class="timeline-badge">Arte & Oficinas</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Oficinas de Cerâmica: Especial de Natal</h2>
+                        <p class="timeline-highlight">Para quem gosta de atividades manuais, a A Chakra programou duas manhãs de oficinas de cerâmica com tema natalino.</p>
+                        <p>A proposta é trabalhar com modelagem para criar peças decorativas, como presépio ou árvore de Natal. É uma experiência para quem quer experimentar a cerâmica, aprender uma técnica nova e produzir uma peça com as próprias mãos.</p>
+                        <p>Não é necessário transformar o passeio em uma atividade profissional: a graça está justamente em conhecer o processo, experimentar o material e aproveitar algumas horas dedicadas à criatividade.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Datas:</strong> 14 e 22 de novembro.</p>
+                            <p><strong>Horário divulgado:</strong> das 9h às 12h.</p>
+                            <p><strong>Local:</strong> A Chakra, Rua Olímpio Lírio, 771, Santa Lúcia, Vitória.</p>
+                            <p><strong>Inscrições e valores:</strong> consultar a organização.</p>
+                            <p><strong>Agenda oficial:</strong> <a href="https://achakra.art/eventos" target="_blank" rel="noopener noreferrer">achakra.art/eventos</a></p>
+                            <p><strong>Atenção:</strong> a peça poderá ser retirada aproximadamente 15 dias após a produção.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 5 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">18 e 19</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/empoderadonas.jpg" alt="EmpoderaDonas 2026" loading="lazy">
+                        <span class="timeline-badge">Empreendedorismo Feminino</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>EmpoderaDonas 2026</h2>
+                        <p class="timeline-highlight">Vitória recebe a terceira edição do EmpoderaDonas, evento dedicado ao empreendedorismo feminino.</p>
+                        <p>A programação prevê painéis, trilhas de conteúdo, feira de negócios e mentorias, com atenção a diferentes trajetórias e realidades de mulheres empreendedoras.</p>
+                        <p>Entre os temas previstos estão negócios liderados por mulheres negras, mães empreendedoras, mulheres acima de 60 anos, pessoas com deficiência e empreendedoras de territórios periféricos.</p>
+                        <p>Além das palestras, a feira de negócios é uma oportunidade de conhecer marcas, produtos e serviços criados por mulheres.</p>
+                        <p>É um evento para quem empreende, pensa em começar um negócio ou simplesmente quer conhecer histórias e iniciativas que movimentam a economia local.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Centro de Convenções de Vitória.</p>
+                            <p><strong>Inscrição:</strong> Pelo site oficial gratuita, mediante doação de 1 kg de alimento não perecível.</p>
+                            <p><strong>Atenção:</strong> a organização informa que é necessário levar 1 kg de alimento não perecível e que a entrada está sujeita à lotação.</p>
+                            <p><strong>Informações:</strong> <a href="https://es.agenciasebrae.com.br/cultura-empreendedora/inscricoes-abertas-para-participar-do-evento-empoderadonas/" target="_blank" rel="noopener noreferrer">Agência Sebrae ES</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 6 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">19</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/caravana-empoderadonas.jpg" alt="Caravana Empoderadonas 2026" loading="lazy">
+                        <span class="timeline-badge">Convenção & Liderança</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Caravana Empoderadonas 2026</h2>
+                        <p class="timeline-highlight">A Caravana Empoderadonas é divulgada como uma convenção voltada ao empreendedorismo feminino, à liderança e ao fortalecimento de redes de apoio.</p>
+                        <p>A programação reúne profissionais e palestrantes para conversar sobre negócios e oportunidades para mulheres.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Vitória Convention Centre, Rua Constante Sodré, 157, Santa Lúcia, Vitória.</p>
+                            <p><strong>Horário divulgado:</strong> das 7h às 23h.</p>
+                            <p><strong>Entrada:</strong> gratuita, mediante inscrição prévia.</p>
+                            <p><strong>Inscrições:</strong> <a href="https://www.sympla.com.br/evento/caravana-empoderadonas-2026/3637863" target="_blank" rel="noopener noreferrer">Inscrições no Sympla</a></p>
+                            <p><strong>Site do espaço:</strong> <a href="https://vitoriaconvention.com.br" target="_blank" rel="noopener noreferrer">vitoriaconvention.com.br</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 7 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">20</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/batuke-pretinho-silva.jpg" alt="Batuke do Pretinho" loading="lazy">
+                        <span class="timeline-badge">Música & Show</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Batuke do Pretinho, com participação de Silva</h2>
+                        <p class="timeline-highlight">O feriado da Consciência Negra terá uma roda de samba do projeto Batuke do Pretinho, com participação do cantor Silva.</p>
+                        <p>Criado pelo multi-instrumentista Pretinho da Serrinha, o projeto reúne convidados em apresentações dedicadas à música brasileira e ao samba.</p>
+                        <p>É uma opção para quem quer aproveitar o feriado ao som de música brasileira.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Na Vista, Rua Judite Maria Tovar Varejão, 435, Enseada do Suá.</p>
+                            <p><strong>Abertura dos portões:</strong> 20h.</p>
+                            <p><strong>Início do show:</strong> 22h.</p>
+                            <p><strong>Ingressos:</strong> Consultar disponibilidade em <a href="https://www.ticket360.com.br/" target="_blank" rel="noopener noreferrer">Ticket360</a></p>
+                            <p><strong>Instagram:</strong> @batukedopretinhodaserrinha</p>
+                            <p><strong>Cobertura:</strong> <a href="https://www.folhavitoria.com.br/agenda-de-eventos/pretinho-da-serrinha-traz-silva-para-roda-de-samba-em-vitoria/" target="_blank" rel="noopener noreferrer">Folha Vitória</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 8 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">NOV</span>
+                    <span class="t-day">26</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/giovana-fagundes.jpg" alt="Giovana Fagundes" loading="lazy">
+                        <span class="timeline-badge">Humor & Stand-up</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Giovana Fagundes: Testando Novo Show</h2>
+                        <p class="timeline-highlight">A humorista Giovana Fagundes apresenta um espetáculo de stand-up que mistura humor, provocações e conversas sobre relacionamentos e vivências.</p>
+                        <p>A apresentação também prevê interação com o público.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Palácio da Cultura Sônia Cabral, Praça João Clímaco, Centro, Vitória.</p>
+                            <p><strong>Horário:</strong> 20h30.</p>
+                            <p><strong>Ingressos e informações:</strong> <a href="https://www.sympla.com.br/evento/giovana-fagundes-testando-novo-show-quinta-26-11-as-20-30-teatro-sonia-cabral-vitoria-es/3601988" target="_blank" rel="noopener noreferrer">Página do Sympla</a></p>
+                            <p><strong>Informações sobre o teatro:</strong> <a href="https://secult.es.gov.br/casa-da-musica-sonia-cabral" target="_blank" rel="noopener noreferrer">Secult ES</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SEPARADOR / MÊS -->
+            <div class="timeline-section-title">
+                <h2>DEZEMBRO DE 2026</h2>
             </div>
 
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">MULHERES EM VITÓRIA</h2>
-                    <img class="img" src="img/mulheres.jpg" alt="Mulheres em Vitória" loading="lazy">
-                    <div class="card-content">
-                        <h3>Veja agora essas mulheres inspiradoras do nosso estado</h3>
-                        <p>Empreendedoras, artesãs, artistas e mulheres que movimentam a economia e preservam a cultura capixaba.</p>
-                        <a href="mulheres.html" class="btn">Ver mais</a>
+            <!-- EVENTO 9 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">DEZ</span>
+                    <span class="t-day">05</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/pitty.jpg" alt="Pitty no Espaço Patrick Ribeiro" loading="lazy">
+                        <span class="timeline-badge">Rock Nacional</span>
                     </div>
-                </article>
-            </div>
-
-            <div class="grid-cards">
-                <article class="card">
-                    <h2 class="page-title2">EVENTOS</h2>
-                    <img class="img" src="img/eventos.jpg" alt="Eventos" loading="lazy">
-                    <div class="card-content">
-                        <h3>Aqui você encontra os melhores eventos da cidade</h3>
-                        <p>Shows, samba, pagode, feiras, oficinas, experiências com vinho, cerâmica e exposições para colocar no calendário.</p>
-                        <a href="eventos.html" class="btn">Ver mais</a>
+                    <div class="timeline-text-content">
+                        <h2>Pitty no Espaço Patrick Ribeiro</h2>
+                        <p class="timeline-highlight">A cantora Pitty tem apresentação anunciada em Vitória para 5 de dezembro.</p>
+                        <p>É uma opção para quem acompanha o rock nacional e quer incluir música ao vivo na programação do mês.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Espaço Patrick Ribeiro, no complexo do Aeroporto de Vitória, em Goiabeiras.</p>
+                            <p><strong>Horário informado:</strong> das 17h às 20h.</p>
+                            <p><strong>Informações:</strong> <a href="https://www.jambase.com/show/pitty-espaco-patrick-ribeiro-aeroporto-vitoria-20261205" target="_blank" rel="noopener noreferrer">JamBase Info</a></p>
+                        </div>
                     </div>
-                </article>
-            </div>
+                </div>
+            </article>
 
+            <!-- EVENTO 10 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">DEZ</span>
+                    <span class="t-day">11</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/art-wine.jpg" alt="Art & Wine" loading="lazy">
+                        <span class="timeline-badge">Arte, Vinho & Gastronomia</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Art & Wine: uma noite de pintura, vinho e gastronomia</h2>
+                        <p class="timeline-highlight">A Chakra divulgou uma edição do Art & Wine para dezembro de 2026, reunindo pintura em tela, vinho e gastronomia com a artista Liza Tancredi.</p>
+                        <p>A proposta combina uma atividade artística com uma experiência gastronômica. É uma opção para quem gosta de pintura, quer experimentar uma atividade diferente ou procura um programa para fazer com uma amiga.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Data divulgada:</strong> 11 de dezembro de 2026.</p>
+                            <p><strong>Horário:</strong> 19h.</p>
+                            <p><strong>Local:</strong> A Chakra, Rua Olímpio Lírio, 771, Santa Lúcia, Vitória.</p>
+                            <p><strong>Inscrições e valores:</strong> consultar a organização.</p>
+                            <p><strong>Agenda oficial:</strong> <a href="https://achakra.art/eventos" target="_blank" rel="noopener noreferrer">achakra.art/eventos</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EVENTO 11 -->
+            <article class="timeline-item">
+                <div class="timeline-date-box">
+                    <span class="t-month">DEZ</span>
+                    <span class="t-day">13</span>
+                </div>
+                <div class="timeline-content-card">
+                    <div class="timeline-img-wrap">
+                        <img src="img/gessica-ferreira.jpg" alt="Gessica Ferreira" loading="lazy">
+                        <span class="timeline-badge">Teatro & Comédia</span>
+                    </div>
+                    <div class="timeline-text-content">
+                        <h2>Gessica Ferreira: Hitch – Conselheira Amorosa</h2>
+                        <p class="timeline-highlight">A atriz e humorista Gessica Ferreira apresenta o espetáculo “Hitch – Conselheira Amorosa”, no qual interpreta uma conselheira que aborda dilemas e situações dos relacionamentos contemporâneos com humor.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Palácio da Cultura Sônia Cabral, Praça João Clímaco, Centro, Vitória.</p>
+                            <p><strong>Horário divulgado:</strong> das 19h às 22h</p>
+                            <p><strong>Ingressos e informações:</strong> <a href="https://www.comediaingressos.com.br/shows/gessica-ferreira-teatro-sonia-cabral" target="_blank" rel="noopener noreferrer">Comédia Ingressos</a></p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- SEÇÃO ESPECIAL: VINHO, CERÂMICA E EXPERIÊNCIAS CRIATIVAS (MANTIDO NA MESMA ESTRUTURA DA TIMELINE) -->
+        <section class="events-timeline-container" style="margin-top: 3.5rem;" aria-label="Experiências criativas">
+            <article class="timeline-item" style="grid-template-columns: 1fr;">
+                <div class="timeline-content-card" style="padding: 2.5rem;">
+                    <div class="timeline-text-content" style="padding: 0;">
+                        <h2 style="font-size: 2.2rem; text-align: center; margin-bottom: 1.5rem;">Vinho, Cerâmica e Experiências Criativas</h2>
+                        
+                        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 1.5rem;"><strong>Experiência são grandes eventos.</strong></p>
+                        <p>Uma oficina de cerâmica, uma degustação de vinhos ou uma feira de pequenos produtores podem transformar um fim de semana comum em algo incrível.</p>
+                        <p>Em julho de 2026, Vitória recebeu a Feira de Cerâmica e Decoração do Espírito Santo, que reuniu expositores, demonstrações de técnicas e oficinas gratuitas. A cidade também recebeu a ExpoVinhos em julho.</p>
+                        
+                        <h3 style="margin-top: 2rem; color: #fff; font-size: 1.6rem; font-family: var(--font-serif);">Gran Cave: vinho, gastronomia e degustações</h3>
+                        <p>Para quem gosta de vinho, Vitória também tem espaços especializados que merecem atenção.</p>
+                        <p>A Gran Cave, na Mata da Praia, reúne adega, bistrô e bar de vinhos. A proposta combina uma seleção de rótulos com pratos preparados para acompanhar diferentes estilos de bebida. Divulga experiências de degustação, com participação de importadoras e especialistas. Esse tipo de encontro pode ser interessante tanto para quem já conhece o universo dos vinhos quanto para quem deseja começar a aprender sobre uvas, regiões, aromas e harmonização.</p>
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Avenida Carlos Gomes de Sá, 225, Mata da Praia, Vitória.</p>
+                            <p><strong>Telefone divulgado:</strong> (27) 99276-6085.</p>
+                            <p><strong>Instagram:</strong> @grancave.br</p>
+                            <p><strong>Atenção:</strong> confirmar a agenda de degustações, reservas e valores diretamente com o estabelecimento.</p>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; color: #fff; font-size: 1.6rem; font-family: var(--font-serif);">Canto do Vinho: uma experiência à mesa</h3>
+                        <p>Na Praia do Canto, o Canto do Vinho reúne restaurante, bistrô e bar com foco em vinhos.</p>
+                        <p>A localização próxima ao canal é um dos elementos que fazem parte da experiência do espaço. A proposta combina refeições, bebidas e uma carta de vinhos para quem gosta de escolher a bebida com atenção e aproveitar a refeição sem pressa.</p>
+                        <div class="info-card">
+                            <p><strong>Local:</strong> Rua Aleixo Netto, 1702, Praia do Canto, Vitória.</p>
+                            <p><strong>Telefone:</strong> (27) 3314-4070.</p>
+                            <p><strong>Instagram:</strong> @cantodovinho.vix</p>
+                            <p><strong>Atenção:</strong> consultar a carta de vinhos, horários e possíveis eventos de degustação.</p>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; color: #fff; font-size: 1.6rem; font-family: var(--font-serif);">Cerâmica: criatividade que também vira experiência</h3>
+                        <p>A cerâmica é uma atividade que mistura técnica, criatividade e paciência. Trabalhar com argila exige atenção à forma, à textura e ao tempo de cada etapa.</p>
+                        <p>Em Vitória, existem ateliês que oferecem experiências e atividades relacionadas à produção cerâmica.</p>
+                        <p>A Grün cerâmicas, na Praia do Canto, trabalha com peças autorais e divulga workshops e aulas. É uma opção para quem deseja conhecer o processo de criação e experimentar a modelagem.</p>
+                        <p>A Thais Daher Cerâmica, na Ilha de Santa Maria, também atua com produção artesanal e atividades de ensino, incluindo experiências de modelagem manual e torno.</p>
+                        <p>A Chakra, em Santa Lúcia, divulgou oficinas temáticas de cerâmica para novembro, incluindo atividades especiais de Natal.</p>
+                        <p>Esses espaços mostram que a cerâmica pode ser mais do que uma atividade de compra: é também uma oportunidade de aprender, experimentar materiais e conhecer o trabalho de artistas e artesãs.</p>
+                        
+                        <div class="info-card">
+                            <p><strong>Onde encontrar:</strong></p>
+                            <p>• Grün cerâmicas: Avenida Rio Branco, 1630, sala 401, Praia do Canto. Telefone: (21) 99720-6559.</p>
+                            <p>• Thais Daher Cerâmica: Avenida Paulino Müller, 534, Ilha de Santa Maria. Telefone: (27) 99925-8390. Instagram: @thais.daherceramica.</p>
+                            <p>• A Chakra: Rua Olímpio Lírio, 771, Santa Lúcia. Site Oficial: <a href="https://achakra.art/eventos" target="_blank" rel="noopener noreferrer">achakra.art/eventos</a></p>
+                            <p><strong>Atenção:</strong> oficinas, turmas, valores e necessidade de reserva devem ser confirmados diretamente com cada ateliê.</p>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; color: #fff; font-size: 1.6rem; font-family: var(--font-serif);">Onde acompanhar novas experiências</h3>
+                        <p>A programação de vinho, cerâmica e atividades criativas muda ao longo do ano. Por isso, vale acompanhar os canais oficiais dos espaços culturais e ateliês.</p>
+                        <p>Alguns endereços para ficar de olho:</p>
+                        <div class="info-card">
+                            <p>• <strong>Hub ES+:</strong> Praça Costa Pereira, 30, Centro. O espaço divulga oficinas, encontros, palestras e atividades ligadas à economia criativa. Telefone: (27) 99991-6991. Instagram: @hubesmais.</p>
+                            <p>• <strong>Casa da Stael:</strong> Rua Sete de Setembro, 263, Centro. A agenda pode incluir exposições, oficinas e atividades artísticas. Telefone: (27) 99787-3269.</p>
+                        </div>
+                        <p style="margin-top: 1.5rem;">Se você souber de uma oficina, feira ou degustação que ainda não apareceu por aqui, mande sua indicação. Queremos que a agenda do dEStinos seja construída também por quem acompanha o blog.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SEÇÃO DE RECOMENDAÇÕES (3 CARDS NO RODAPÉ) -->
+        <section class="related-section" aria-label="Veja mais destinos">
+            <h2 class="related-title">VEJA MAIS DO NOSSO SITE</h2>
+            
+            <div class="related-grid">
+                <a href="lugares.html" class="related-card">
+                    <div class="related-img-wrap">
+                        <img src="img/lugares.jpg" alt="Lugares e Cultura" loading="lazy">
+                    </div>
+                    <div class="related-card-content">
+                        <h3>Lugares e Cultura</h3>
+                        <p>Conheça museus, parques e edifícios históricos.</p>
+                    </div>
+                </a>
+
+                <a href="onde-comer.html" class="related-card">
+                    <div class="related-img-wrap">
+                        <img src="img/onde-comer.jpg" alt="Onde Comer" loading="lazy">
+                    </div>
+                    <div class="related-card-content">
+                        <h3>Onde Comer?</h3>
+                        <p>Descubra restaurantes e sabores capixabas.</p>
+                    </div>
+                </a>
+
+                <a href="padaria-confeitaria.html" class="related-card">
+                    <div class="related-img-wrap">
+                        <img src="img/juca-padaria.jpg" alt="Padaria e Confeitaria" loading="lazy">
+                    </div>
+                    <div class="related-card-content">
+                        <h3>Padaria e Confeitaria</h3>
+                        <p>Pães artesanais, cafés especiais e confeitarias finas.</p>
+                    </div>
+                </a>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 dEStino. Todos os direitos reservados.</p>
+        <p>&copy; 2026 dEStinos. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/main.js"></script>
