@@ -196,9 +196,19 @@
                                 ];
 
 
-                                // Procura a seção mais específica
+                        
                                 const candidatos = elementos
                                     .map(function (elemento) {
+
+                                        // VERIFICA SE O ELEMENTO ESTÁ VISÍVEL NA PÁGINA
+                                        const estaVisivel = elemento.offsetParent !== null && 
+                                                            window.getComputedStyle(elemento).display !== 'none' &&
+                                                            window.getComputedStyle(elemento).visibility !== 'hidden';
+
+                                        // Se não estiver visível, ignora o elemento
+                                        if (!estaVisivel) {
+                                            return null;
+                                        }
 
                                         const textoElemento = normalizarTexto(
                                             elemento.textContent || ''
@@ -250,10 +260,10 @@
 
                                     })
                                     .filter(function (item) {
-                                        return item.correspondeTodos;
+                                        // Remove os nulos (elementos ocultos ou que não correspondem)
+                                        return item !== null && item.correspondeTodos;
                                     })
                                     .sort(function (a, b) {
-
                                         // Primeiro, os melhores títulos
                                         if (b.pontuacao !== a.pontuacao) {
                                             return b.pontuacao - a.pontuacao;
@@ -264,7 +274,6 @@
                                             a.elemento.textContent.length -
                                             b.elemento.textContent.length
                                         );
-
                                     });
 
 
