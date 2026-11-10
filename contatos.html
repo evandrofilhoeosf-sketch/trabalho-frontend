@@ -36,29 +36,125 @@
         </nav>
 </header>
 
-    <main>
-        <h1 class="page-title">Fale Conosco</h1>
-        <p class="page-subtitle">Tem alguma dica de roteiro, sugestão de ponto turístico ou parceria? Entre em contato conosco!</p>
+    
+<main class="contact-page">
 
-        <form id="contactForm" class="contact-form">
-            <div class="form-group">
-                <label for="name">Seu Nome:</label>
-                <input type="text" id="name" required placeholder="Digite seu nome completo">
+    <h1 class="page-title">Sua opinião é importante!</h1>
+
+    <p class="page-subtitle">
+        Ajude o dEStino a melhorar! Compartilhe sua experiência,
+        avalie nosso site ou envie sugestões para tornar sua
+        navegação ainda melhor.
+    </p>
+
+    <form id="contactForm" class="contact-form">
+
+        <!-- Nome -->
+        <div class="form-group">
+            <label for="name">Seu nome:</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Como podemos chamar você?"
+            >
+        </div>
+
+        <!-- E-mail -->
+        <div class="form-group">
+            <label for="email">Seu e-mail:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+            >
+        </div>
+
+        <!-- Tipo de feedback -->
+        <div class="form-group">
+            <label for="feedbackType">Sobre o que deseja falar?</label>
+
+            <select id="feedbackType" name="feedbackType" required>
+                <option value="" disabled selected>
+                    Selecione uma opção
+                </option>
+                <option value="Sugestão">Sugestão de melhoria</option>
+                <option value="Experiência">Experiência com o site</option>
+                <option value="Problema">Problema encontrado</option>
+                <option value="Conteúdo">Sugestão de conteúdo ou roteiro</option>
+                <option value="Parceria">Parcerias e divulgação</option>
+                <option value="Outro">Outro assunto</option>
+            </select>
+        </div>
+
+        <!-- Avaliação -->
+        <fieldset class="form-group rating-group">
+
+            <legend>Como você avalia sua experiência com o dEStino?</legend>
+
+            <div class="rating-options">
+
+                <label>
+                    <input type="radio" name="rating" value="1" required>
+                    <span>1</span>
+                    <small>Péssima</small>
+                </label>
+
+                <label>
+                    <input type="radio" name="rating" value="2">
+                    <span>2</span>
+                    <small>Ruim</small>
+                </label>
+
+                <label>
+                    <input type="radio" name="rating" value="3">
+                    <span>3</span>
+                    <small>Regular</small>
+                </label>
+
+                <label>
+                    <input type="radio" name="rating" value="4">
+                    <span>4</span>
+                    <small>Boa</small>
+                </label>
+
+                <label>
+                    <input type="radio" name="rating" value="5">
+                    <span>5</span>
+                    <small>Excelente</small>
+                </label>
+
             </div>
+        </fieldset>
 
-            <div class="form-group">
-                <label for="email">Seu E-mail:</label>
-                <input type="email" id="email" required placeholder="seu@email.com">
-            </div>
+        <!-- Mensagem -->
+        <div class="form-group">
+            <label for="message">Conte um pouco mais:</label>
 
-            <div class="form-group">
-                <label for="message">Mensagem / Dica:</label>
-                <textarea id="message" required placeholder="Conte sua experiência ou tire sua dúvida..."></textarea>
-            </div>
+            <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Escreva sua opinião, sugestão ou conte como foi sua experiência..."
+            ></textarea>
+        </div>
 
-            <button type="submit" class="btn">Enviar Mensagem</button>
-        </form>
-    </main>
+        <!-- Botão -->
+        <button type="submit" class="btn">
+            Enviar Feedback
+        </button>
+
+        <p class="form-disclaimer">
+            Agradecemos por dedicar um momento para ajudar
+            o dEStino a crescer!
+        </p>
+
+    </form>
+
+</main>
+
 
     <footer>
         <p>&copy; 2026 dEStino. Todos os direitos reservados.</p>
@@ -73,3 +169,5 @@
     </button>
 </body>
 </html>
+
+nO FINAL AGORA, AJEITE PRA MIM ESSA PARTE DO CONTATOS, ESSE FORMULARIO PARA RECOLHER FEEDBACK

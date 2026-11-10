@@ -61,54 +61,214 @@
         }
 
 
-        /* =========================================
-           PESQUISA EXPANSÍVEL
-        ========================================= */
+        
+/* =========================================
+   PESQUISA EXPANSÍVEL E FUNCIONAL
+========================================= */
 
-        const searchForm = document.getElementById('searchForm');
-        const searchToggle = document.getElementById('searchToggle');
-        const searchInput = document.getElementById('searchInput');
+const searchForm = document.getElementById('searchForm');
+const searchToggle = document.getElementById('searchToggle');
+const searchInput = document.getElementById('searchInput');
 
-        if (searchForm && searchToggle && searchInput) {
+if (searchForm && searchToggle && searchInput) {
 
-            function fecharPesquisa() {
-                searchForm.classList.remove('search-open');
+    // Cria a área dos resultados automaticamente
+    const resultadosPesquisa = document.createElement('div');
+    resultadosPesquisa.className = 'site-search-results';
+    resultadosPesquisa.id = 'searchResults';
+    resultadosPesquisa.setAttribute('aria-live', 'polite');
 
-                searchToggle.setAttribute('aria-expanded', 'false');
-                searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
+    searchForm.parentElement.appendChild(resultadosPesquisa);
+
+    // Páginas disponíveis no site
+    const paginas = [
+        { nome: 'Home', arquivo: 'index.html' },
+        { nome: 'Lugares e Cultura', arquivo: 'lugares.html' },
+        { nome: 'Onde Comer?', arquivo: 'onde-comer.html' },
+        { nome: 'Padaria e Confeitaria', arquivo: 'padaria-confeitaria.html' },
+        { nome: 'Mulheres em Vitória', arquivo: 'mulheres.html' },
+        { nome: 'Eventos', arquivo: 'eventos.html' },
+        { nome: 'Contatos', arquivo: 'contatos.html' }
+    ];
+
+    function normalizarTexto(texto) {
+        return texto
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase();
+    }
+
+    function fecharPesquisa() {
+        searchForm.classList.remove('search-open');
+        resultadosPesquisa.classList.remove('resultados-abertos');
+
+        searchToggle.setAttribute('aria-expanded', 'false');
+        searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
+    }
+
+    // Executa a pesquisa
+    async function pesquisar() {
+
+        const termo = normalizarTexto(searchInput.value.trim());
+
+        if (!termo) {
+            resultadosPesquisa.innerHTML =
+                '<p>Digite algo para pesquisar.</p>';
+            resultadosPesquisa.classList.add('resultados-abertos');
+            return;
+        }
+
+        resultadosPesquisa.innerHTML =
+            '<p>Pesquisando...</p>';
+
+        resultadosPesquisa.classList.add('resultados-abertos');
+
+        const termos = termo.split(/\s+/);
+
+        try {
+
+            const paginasPesquisadas = await Promise.all(
+                paginas.map(async function (pagina) {
+
+                    try {
+                        const resposta = await fetch(pagina.arquivo);
+
+                        if (!resposta.ok) return null;
+
+                        const html = await resposta.text();
+
+                        const documento = new DOMParser()
+                            .parseFromString(html, 'text/html');
+
+                        const conteudo =
+                            documento.querySelector('main') ||
+                            documento.body;
+
+                        const titulo =
+                            documento.querySelector('h1')?.textContent ||
+                            pagina.nome;
+
+                        const texto = normalizarTexto(
+                            titulo + ' ' + conteudo.textContent
+                        );
+
+                        const quantidade = termos.filter(
+                            palavra => texto.includes(palavra)
+                        ).length;
+
+                        if (quantidade === 0) return null;
+
+                        return {
+                            nome: titulo.trim(),
+                            arquivo: pagina.arquivo,
+                            pontuacao: quantidade
+                        };
+
+                    } catch (erro) {
+                        console.warn(
+                            'Não foi possível pesquisar:',
+                            pagina.arquivo
+                        );
+                        return null;
+                    }
+                })
+            );
+
+            const encontrados = paginasPesquisadas
+                .filter(Boolean)
+                .sort((a, b) => b.pontuacao - a.pontuacao);
+
+            resultadosPesquisa.innerHTML = '';
+
+            const titulo = document.createElement('p');
+            titulo.className = 'search-results-heading';
+
+            titulo.textContent =
+                encontrados.length + ' resultado(s) encontrado(s)';
+
+            resultadosPesquisa.appendChild(titulo);
+
+            if (encontrados.length === 0) {
+
+                const mensagem = document.createElement('p');
+                mensagem.textContent =
+                    'Nenhum resultado encontrado. Tente outra palavra.';
+
+                resultadosPesquisa.appendChild(mensagem);
+                return;
             }
 
+            encontrados.forEach(function (resultado) {
+
+                const link = document.createElement('a');
+
+                link.href = resultado.arquivo;
+                link.className = 'search-result-link';
+                link.textContent = resultado.nome;
+
+                resultadosPesquisa.appendChild(link);
+            });
+
+        } catch (erro) {
+
+            resultadosPesquisa.innerHTML =
+                '<p>Erro ao realizar a pesquisa.</p>';
+
+            console.error(erro);
+        }
+    }
+
+
             searchToggle.addEventListener('click', function (event) {
+
+                event.preventDefault();
                 event.stopPropagation();
 
-                const aberta = searchForm.classList.toggle('search-open');
+                if (searchForm.classList.contains('search-open')) {
 
-                searchToggle.setAttribute('aria-expanded', String(aberta));
-                searchToggle.setAttribute(
-                    'aria-label',
-                    aberta ? 'Fechar pesquisa' : 'Abrir pesquisa'
-                );
+                    if (searchInput.value.trim()) {
+                        pesquisar();
+                    } else {
+                        fecharPesquisa();
+                    }
 
-                if (aberta) {
+                } else {
+
+                    searchForm.classList.add('search-open');
+
+                    searchToggle.setAttribute('aria-expanded', 'true');
+                    searchToggle.setAttribute('aria-label', 'Pesquisar');
+
                     searchInput.focus();
                 }
             });
 
+            // Também permite pesquisar apertando Enter
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                pesquisar();
+            });
+
+            // Fecha ao clicar fora
             document.addEventListener('click', function (event) {
+
                 if (
                     !searchForm.contains(event.target) &&
-                    !searchToggle.contains(event.target)
+                    !resultadosPesquisa.contains(event.target)
                 ) {
                     fecharPesquisa();
                 }
             });
 
+            // Fecha com ESC
             document.addEventListener('keydown', function (event) {
+
                 if (event.key === 'Escape') {
                     fecharPesquisa();
                 }
             });
         }
+
 
 
         /* =========================================
