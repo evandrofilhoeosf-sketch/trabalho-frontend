@@ -2355,3 +2355,27 @@ mark.termo-destacado {
     border-radius: 3px;
     font-weight: bold;
 }
+
+/* =========================================
+   BLOCO UNIFICADO DE RESTAURANTES
+========================================= */
+.food-group-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Espaço entre cada restaurante dentro do bloco */
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+/* Quando os itens estão dentro do bloco unificado, 
+   eles perdem o fundo e borda própria para assumir o bloco único */
+.food-group-container .food-item {
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
