@@ -1377,3 +1377,90 @@ height: 260px;
 .paneleiras-texto p {
     margin-bottom: 1rem;
 }
+
+/* =====================================================
+   CHAMADA FINAL DA HOME
+===================================================== */
+.home-cta {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 2.5rem auto 2rem;
+    padding: 3.5rem 2rem;
+    overflow: hidden;
+    text-align: center;
+    color: var(--white-color);
+    background: linear-gradient(135deg, #7e2678 0%, #a936a0 52%, #c459bb 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(65, 0, 58, 0.22);
+}
+
+.home-cta-content {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.home-cta-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.65rem;
+    color: #f9d8f5;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.home-cta h2 {
+    margin: 0 0 1rem;
+    color: #ffffff;
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: 1.2;
+}
+
+.home-cta p {
+    max-width: 650px;
+    margin: 0 auto 1.7rem;
+    color: rgba(255, 255, 255, 0.96);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.home-cta-button {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    color: var(--text-primary);
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.home-cta-button:hover {
+    color: #ffffff;
+    background: transparent;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+    .home-cta {
+        margin: 1.5rem auto;
+        padding: 2.5rem 1.25rem;
+    }
+
+    .home-cta p {
+        font-size: 0.92rem;
+    }
+
+    .home-cta-button {
+        width: 100%;
+        max-width: 260px;
+    }
+}
