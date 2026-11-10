@@ -238,6 +238,8 @@ body {
 /* --- BOTÃO VOLTAR AO INÍCIO --- */
 #btnVoltarInicio {
     display: none;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     right: 22px;
     bottom: 75px;
@@ -253,6 +255,8 @@ body {
     font-size: 1.8rem;
     font-weight: bold;
     cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
     transition: background-color 0.3s, transform 0.2s;
 }
 
