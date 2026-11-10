@@ -1,27 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <title>dEStino - Contatos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
     <header class="site-header">
-    <div class="header-main-container">
-        <!-- Logo -->
-        <a href="index.html" class="logo-center">
-            dES<span>tino</span>
-        </a>
-        
-        <!-- Barra de Pesquisa -->
-        <div class="header-search-bar">
-            <input type="text" placeholder="O que você está procurando?">
-            <button type="submit">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </button>
+        <div class="header-main-container">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo-center">
+                dES<span>tino</span>
+            </a>
+
+            <!-- Barra de Pesquisa -->
+            <div class="header-search-bar">
+                <input
+                    type="text"
+                    placeholder="O que você está procurando?"
+                    aria-label="Pesquisar no site"
+                >
+
+                <button type="submit" aria-label="Pesquisar">
+                    <svg width="18" height="18" fill="none"
+                         stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
         </div>
-    </div>
 
         <nav class="side-nav" id="sideNav" aria-label="Navegação principal">
             <ul>
@@ -31,143 +49,240 @@
                 <li><a href="padaria-confeitaria.html">Padaria e Confeitaria</a></li>
                 <li><a href="mulheres.html">Mulheres em Vitória</a></li>
                 <li><a href="eventos.html">Eventos</a></li>
-                <li><a href="contatos.html" class="active" aria-current="page">Contatos</a></li>
+                <li>
+                    <a href="contatos.html" class="active" aria-current="page">
+                        Contatos
+                    </a>
+                </li>
             </ul>
         </nav>
-</header>
+    </header>
 
-    
-<main class="contact-page">
 
-    <h1 class="page-title">Sua opinião é importante!</h1>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="contact-page" id="pagina-contatos">
 
-    <p class="page-subtitle">
-        Ajude o dEStino a melhorar! Compartilhe sua experiência,
-        avalie nosso site ou envie sugestões para tornar sua
-        navegação ainda melhor.
-    </p>
+        <h1 class="page-title" id="titulo-feedback">
+            Sua opinião é importante!
+        </h1>
 
-    <form id="contactForm" class="contact-form">
-
-        <!-- Nome -->
-        <div class="form-group">
-            <label for="name">Seu nome:</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Como podemos chamar você?"
-            >
-        </div>
-
-        <!-- E-mail -->
-        <div class="form-group">
-            <label for="email">Seu e-mail:</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="seu@email.com"
-            >
-        </div>
-
-        <!-- Tipo de feedback -->
-        <div class="form-group">
-            <label for="feedbackType">Sobre o que deseja falar?</label>
-
-            <select id="feedbackType" name="feedbackType" required>
-                <option value="" disabled selected>
-                    Selecione uma opção
-                </option>
-                <option value="Sugestão">Sugestão de melhoria</option>
-                <option value="Experiência">Experiência com o site</option>
-                <option value="Problema">Problema encontrado</option>
-                <option value="Conteúdo">Sugestão de conteúdo ou roteiro</option>
-                <option value="Parceria">Parcerias e divulgação</option>
-                <option value="Outro">Outro assunto</option>
-            </select>
-        </div>
-
-        <!-- Avaliação -->
-        <fieldset class="form-group rating-group">
-
-            <legend>Como você avalia sua experiência com o dEStino?</legend>
-
-            <div class="rating-options">
-
-                <label>
-                    <input type="radio" name="rating" value="1" required>
-                    <span>1</span>
-                    <small>Péssima</small>
-                </label>
-
-                <label>
-                    <input type="radio" name="rating" value="2">
-                    <span>2</span>
-                    <small>Ruim</small>
-                </label>
-
-                <label>
-                    <input type="radio" name="rating" value="3">
-                    <span>3</span>
-                    <small>Regular</small>
-                </label>
-
-                <label>
-                    <input type="radio" name="rating" value="4">
-                    <span>4</span>
-                    <small>Boa</small>
-                </label>
-
-                <label>
-                    <input type="radio" name="rating" value="5">
-                    <span>5</span>
-                    <small>Excelente</small>
-                </label>
-
-            </div>
-        </fieldset>
-
-        <!-- Mensagem -->
-        <div class="form-group">
-            <label for="message">Conte um pouco mais:</label>
-
-            <textarea
-                id="message"
-                name="message"
-                rows="6"
-                required
-                placeholder="Escreva sua opinião, sugestão ou conte como foi sua experiência..."
-            ></textarea>
-        </div>
-
-        <!-- Botão -->
-        <button type="submit" class="btn">
-            Enviar Feedback
-        </button>
-
-        <p class="form-disclaimer">
-            Agradecemos por dedicar um momento para ajudar
-            o dEStino a crescer!
+        <p class="page-subtitle" id="descricao-feedback">
+            Ajude o dEStino a melhorar! Compartilhe sua experiência,
+            avalie nosso site ou envie sugestões para tornar sua
+            navegação ainda melhor.
         </p>
 
-    </form>
 
-</main>
+        <!-- FORMULÁRIO DE FEEDBACK -->
+        <form
+            id="contactForm"
+            class="contact-form"
+            aria-label="Formulário de feedback"
+        >
+
+            <!-- NOME -->
+            <div class="form-group" id="campo-nome">
+
+                <label for="name">Seu nome:</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Como podemos chamar você?"
+                    autocomplete="name"
+                >
+
+            </div>
 
 
+            <!-- E-MAIL -->
+            <div class="form-group" id="campo-email">
+
+                <label for="email">Seu e-mail:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seu@email.com"
+                    autocomplete="email"
+                >
+
+            </div>
+
+
+            <!-- TIPO DE FEEDBACK -->
+            <div class="form-group" id="campo-assunto">
+
+                <label for="feedbackType">
+                    Sobre o que deseja falar?
+                </label>
+
+                <select
+                    id="feedbackType"
+                    name="feedbackType"
+                    required
+                >
+
+                    <option value="" disabled selected>
+                        Selecione uma opção
+                    </option>
+
+                    <option value="Sugestão">
+                        Sugestão de melhoria
+                    </option>
+
+                    <option value="Experiência">
+                        Experiência com o site
+                    </option>
+
+                    <option value="Problema">
+                        Problema encontrado
+                    </option>
+
+                    <option value="Conteúdo">
+                        Sugestão de conteúdo ou roteiro
+                    </option>
+
+                    <option value="Parceria">
+                        Parcerias e divulgação
+                    </option>
+
+                    <option value="Outro">
+                        Outro assunto
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- AVALIAÇÃO -->
+            <fieldset
+                class="form-group rating-group"
+                id="campo-avaliacao"
+            >
+
+                <legend>
+                    Como você avalia sua experiência com o dEStino?
+                </legend>
+
+                <div class="rating-options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="1"
+                            required
+                        >
+                        <span>1</span>
+                        <small>Péssima</small>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="2"
+                        >
+                        <span>2</span>
+                        <small>Ruim</small>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="3"
+                        >
+                        <span>3</span>
+                        <small>Regular</small>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="4"
+                        >
+                        <span>4</span>
+                        <small>Boa</small>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="5"
+                        >
+                        <span>5</span>
+                        <small>Excelente</small>
+                    </label>
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- MENSAGEM -->
+            <div class="form-group" id="campo-mensagem">
+
+                <label for="message">
+                    Conte um pouco mais:
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    required
+                    placeholder="Escreva sua opinião, sugestão ou conte como foi sua experiência..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- BOTÃO DE ENVIO -->
+            <button
+                type="submit"
+                class="btn"
+                id="btnEnviarFeedback"
+            >
+                Enviar Feedback
+            </button>
+
+
+            <!-- AVISO -->
+            <p class="form-disclaimer" id="aviso-feedback">
+                Agradecemos por dedicar um momento para ajudar
+                o dEStino a crescer!
+            </p>
+
+        </form>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
     <footer>
         <p>&copy; 2026 dEStino. Todos os direitos reservados.</p>
     </footer>
 
+
+    <!-- SCRIPTS -->
     <script src="js/main.js"></script>
 
-    <button id="btnVoltarInicio"
-            title="Voltar ao início"
-            aria-label="Voltar ao início">
+
+    <!-- BOTÃO VOLTAR AO INÍCIO -->
+    <button
+        id="btnVoltarInicio"
+        title="Voltar ao início"
+        aria-label="Voltar ao início"
+    >
         ↑
     </button>
+
 </body>
 </html>
-
-nO FINAL AGORA, AJEITE PRA MIM ESSA PARTE DO CONTATOS, ESSE FORMULARIO PARA RECOLHER FEEDBACK
