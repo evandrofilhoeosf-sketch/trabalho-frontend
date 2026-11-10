@@ -4,6 +4,7 @@
 ========================================= */
 
 (function () {
+
     function inicializarPagina() {
 
         /* =========================================
@@ -28,6 +29,7 @@
                 const aberto = sideNav.classList.toggle('menu-aberto');
 
                 menuToggle.setAttribute('aria-expanded', String(aberto));
+
                 menuToggle.setAttribute(
                     'aria-label',
                     aberto ? 'Fechar menu' : 'Abrir menu'
@@ -60,8 +62,6 @@
             });
         }
 
-
-        
 /* =========================================
    PESQUISA EXPANSÍVEL E FUNCIONAL
 ========================================= */
@@ -72,15 +72,16 @@ const searchInput = document.getElementById('searchInput');
 
 if (searchForm && searchToggle && searchInput) {
 
-    // Cria a área dos resultados automaticamente
+    // Cria a área de resultados
     const resultadosPesquisa = document.createElement('div');
+
     resultadosPesquisa.className = 'site-search-results';
     resultadosPesquisa.id = 'searchResults';
     resultadosPesquisa.setAttribute('aria-live', 'polite');
 
     searchForm.parentElement.appendChild(resultadosPesquisa);
 
-    // Páginas disponíveis no site
+    // Páginas disponíveis
     const paginas = [
         { nome: 'Home', arquivo: 'index.html' },
         { nome: 'Lugares e Cultura', arquivo: 'lugares.html' },
@@ -91,6 +92,7 @@ if (searchForm && searchToggle && searchInput) {
         { nome: 'Contatos', arquivo: 'contatos.html' }
     ];
 
+    // Normaliza os textos
     function normalizarTexto(texto) {
         return texto
             .normalize('NFD')
@@ -98,22 +100,28 @@ if (searchForm && searchToggle && searchInput) {
             .toLowerCase();
     }
 
+    // Fecha a pesquisa
     function fecharPesquisa() {
+
         searchForm.classList.remove('search-open');
         resultadosPesquisa.classList.remove('resultados-abertos');
 
         searchToggle.setAttribute('aria-expanded', 'false');
         searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
+
+        resultadosPesquisa.innerHTML = '';
     }
 
-    // Executa a pesquisa
+    // Realiza a pesquisa
     async function pesquisar() {
 
-        const termo = normalizarTexto(searchInput.value.trim());
+        const termoOriginal = searchInput.value.trim();
+        const termo = normalizarTexto(termoOriginal);
 
         if (!termo) {
             resultadosPesquisa.innerHTML =
                 '<p>Digite algo para pesquisar.</p>';
+
             resultadosPesquisa.classList.add('resultados-abertos');
             return;
         }
@@ -123,81 +131,129 @@ if (searchForm && searchToggle && searchInput) {
 
         resultadosPesquisa.classList.add('resultados-abertos');
 
-        const termos = termo.split(/\s+/);
+        const termos = [...new Set(termo.split(/\s+/))];
 
         try {
 
             const paginasPesquisadas = await Promise.all(
+
                 paginas.map(async function (pagina) {
 
                     try {
-                        const resposta = await fetch(pagina.arquivo);
 
-                        if (!resposta.ok) return null;
+                        // Considera a localização do projeto
+                        const endereco = new URL(
+                            pagina.arquivo,
+                            document.baseURI
+                        );
+
+                        const resposta = await fetch(endereco.href);
+
+                        if (!resposta.ok) {
+                            return null;
+                        }
 
                         const html = await resposta.text();
 
                         const documento = new DOMParser()
                             .parseFromString(html, 'text/html');
 
+                        // Pesquisa somente no conteúdo principal
                         const conteudo =
                             documento.querySelector('main') ||
                             documento.body;
 
                         const titulo =
-                            documento.querySelector('h1')?.textContent ||
+                            conteudo.querySelector('h1')?.textContent?.trim() ||
+                            documento.title ||
                             pagina.nome;
 
-                        const texto = normalizarTexto(
-                            titulo + ' ' + conteudo.textContent
+                        const textoConteudo = normalizarTexto(
+                            conteudo.textContent || ''
                         );
 
-                        const quantidade = termos.filter(
-                            palavra => texto.includes(palavra)
-                        ).length;
+                        const textoTitulo = normalizarTexto(titulo);
 
-                        if (quantidade === 0) return null;
+                        const encontrados = termos.filter(function (palavra) {
+                            return textoConteudo.includes(palavra);
+                        });
+
+                        // Ignora páginas sem correspondência
+                        if (encontrados.length === 0) {
+                            return null;
+                        }
+
+                        // Dá prioridade para correspondências no título
+                        let pontuacao = encontrados.length;
+
+                        termos.forEach(function (palavra) {
+                            if (textoTitulo.includes(palavra)) {
+                                pontuacao += 3;
+                            }
+                        });
+
+                        // Prioriza a expressão completa
+                        if (textoConteudo.includes(termo)) {
+                            pontuacao += 5;
+                        }
 
                         return {
-                            nome: titulo.trim(),
-                            arquivo: pagina.arquivo,
-                            pontuacao: quantidade
+                            nome: titulo,
+                            arquivo: endereco.href,
+                            pontuacao: pontuacao
                         };
 
                     } catch (erro) {
+
                         console.warn(
-                            'Não foi possível pesquisar:',
-                            pagina.arquivo
+                            'Erro ao consultar:',
+                            pagina.arquivo,
+                            erro
                         );
+
                         return null;
                     }
+
                 })
+
             );
 
+            // Organiza os resultados
             const encontrados = paginasPesquisadas
                 .filter(Boolean)
-                .sort((a, b) => b.pontuacao - a.pontuacao);
+                .sort(function (a, b) {
+                    return b.pontuacao - a.pontuacao;
+                });
 
             resultadosPesquisa.innerHTML = '';
 
-            const titulo = document.createElement('p');
-            titulo.className = 'search-results-heading';
+            // Título dos resultados
+            const tituloResultados = document.createElement('p');
 
-            titulo.textContent =
-                encontrados.length + ' resultado(s) encontrado(s)';
+            tituloResultados.className = 'search-results-heading';
 
-            resultadosPesquisa.appendChild(titulo);
+            tituloResultados.textContent =
+                encontrados.length +
+                (encontrados.length === 1
+                    ? ' resultado encontrado'
+                    : ' resultados encontrados');
 
+            resultadosPesquisa.appendChild(tituloResultados);
+
+            // Nenhum resultado
             if (encontrados.length === 0) {
 
                 const mensagem = document.createElement('p');
+
                 mensagem.textContent =
                     'Nenhum resultado encontrado. Tente outra palavra.';
 
                 resultadosPesquisa.appendChild(mensagem);
+
                 return;
             }
 
+            // Exibe os resultados
             encontrados.forEach(function (resultado) {
 
                 const link = document.createElement('a');
@@ -207,69 +263,74 @@ if (searchForm && searchToggle && searchInput) {
                 link.textContent = resultado.nome;
 
                 resultadosPesquisa.appendChild(link);
+
             });
 
         } catch (erro) {
 
-            resultadosPesquisa.innerHTML =
-                '<p>Erro ao realizar a pesquisa.</p>';
+            console.error('Erro na pesquisa:', erro);
 
-            console.error(erro);
+            resultadosPesquisa.innerHTML =
+                '<p>Não foi possível realizar a pesquisa. Verifique o servidor do site.</p>';
         }
     }
 
+    // Abre ou executa a pesquisa
+    searchToggle.addEventListener('click', function (event) {
 
-            searchToggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-                event.preventDefault();
-                event.stopPropagation();
+        if (searchForm.classList.contains('search-open')) {
 
-                if (searchForm.classList.contains('search-open')) {
-
-                    if (searchInput.value.trim()) {
-                        pesquisar();
-                    } else {
-                        fecharPesquisa();
-                    }
-
-                } else {
-
-                    searchForm.classList.add('search-open');
-
-                    searchToggle.setAttribute('aria-expanded', 'true');
-                    searchToggle.setAttribute('aria-label', 'Pesquisar');
-
-                    searchInput.focus();
-                }
-            });
-
-            // Também permite pesquisar apertando Enter
-            searchForm.addEventListener('submit', function (event) {
-                event.preventDefault();
+            if (searchInput.value.trim()) {
                 pesquisar();
-            });
+            } else {
+                fecharPesquisa();
+            }
 
-            // Fecha ao clicar fora
-            document.addEventListener('click', function (event) {
+        } else {
 
-                if (
-                    !searchForm.contains(event.target) &&
-                    !resultadosPesquisa.contains(event.target)
-                ) {
-                    fecharPesquisa();
-                }
-            });
+            searchForm.classList.add('search-open');
 
-            // Fecha com ESC
-            document.addEventListener('keydown', function (event) {
+            searchToggle.setAttribute('aria-expanded', 'true');
+            searchToggle.setAttribute('aria-label', 'Pesquisar');
 
-                if (event.key === 'Escape') {
-                    fecharPesquisa();
-                }
-            });
+            searchInput.focus();
         }
 
+    });
 
+    // Pesquisa pelo Enter
+    searchForm.addEventListener('submit', function (event) {
+
+        event.preventDefault();
+        pesquisar();
+
+    });
+
+    // Fecha ao clicar fora
+    document.addEventListener('click', function (event) {
+
+        if (
+            !searchForm.contains(event.target) &&
+            !resultadosPesquisa.contains(event.target)
+        ) {
+            fecharPesquisa();
+        }
+
+    });
+
+    // Fecha pelo Escape
+    document.addEventListener('keydown', function (event) {
+
+        if (event.key === 'Escape') {
+            fecharPesquisa();
+        }
+
+    });
+
+}
 
         /* =========================================
            BOTÃO VOLTAR AO INÍCIO
@@ -280,6 +341,7 @@ if (searchForm && searchToggle && searchInput) {
         if (botaoTopo) {
 
             function atualizarBotaoTopo() {
+
                 const deveAparecer = window.scrollY > 400;
 
                 botaoTopo.style.display = deveAparecer ? 'flex' : 'none';
@@ -290,7 +352,9 @@ if (searchForm && searchToggle && searchInput) {
                 );
 
                 botaoTopo.tabIndex = deveAparecer ? 0 : -1;
+
             }
+
 
             window.addEventListener('scroll', atualizarBotaoTopo, {
                 passive: true
@@ -298,16 +362,25 @@ if (searchForm && searchToggle && searchInput) {
 
             atualizarBotaoTopo();
 
+
             botaoTopo.addEventListener('click', function (event) {
+
                 event.preventDefault();
 
                 window.scrollTo({
+
                     top: 0,
+
                     left: 0,
+
                     behavior: 'smooth'
+
                 });
+
             });
+
         }
+
 
 
         /* =========================================
@@ -321,18 +394,26 @@ if (searchForm && searchToggle && searchInput) {
             function atualizarCabecalho() {
 
                 if (window.scrollY > 60) {
+
                     cabecalho.classList.add('header-reduzido');
+
                 } else {
+
                     cabecalho.classList.remove('header-reduzido');
+
                 }
+
             }
+
 
             window.addEventListener('scroll', atualizarCabecalho, {
                 passive: true
             });
 
             atualizarCabecalho();
+
         }
+
 
 
         /* =========================================
@@ -344,13 +425,16 @@ if (searchForm && searchToggle && searchInput) {
         if (rodape) {
 
             function ajustarAlturaRodape() {
+
                 const altura = rodape.offsetHeight;
 
                 document.body.style.setProperty(
                     '--footer-height',
                     altura + 'px'
                 );
+
             }
+
 
             ajustarAlturaRodape();
 
@@ -358,25 +442,38 @@ if (searchForm && searchToggle && searchInput) {
 
             window.addEventListener('load', ajustarAlturaRodape);
 
+
             if (window.ResizeObserver) {
-                const observador = new ResizeObserver(ajustarAlturaRodape);
+
+                const observador = new ResizeObserver(
+                    ajustarAlturaRodape
+                );
+
                 observador.observe(rodape);
+
             }
+
         }
+
     }
+
 
     /* =========================================
        AGUARDA O HTML SER CARREGADO
     ========================================= */
 
     if (document.readyState === 'loading') {
+
         document.addEventListener(
             'DOMContentLoaded',
             inicializarPagina,
             { once: true }
         );
+
     } else {
+
         inicializarPagina();
+
     }
 
 })();

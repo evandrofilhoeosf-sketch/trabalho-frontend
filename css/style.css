@@ -2210,6 +2210,7 @@ main.contact-page {
 }
 
 
+
 /* =========================================
    RESULTADOS DA PESQUISA
 ========================================= */
@@ -2228,6 +2229,7 @@ main.contact-page {
     max-height: 350px;
     overflow-y: auto;
     background: #ffffff;
+    border: 1px solid rgba(126, 59, 122, 0.15);
     border-radius: 7px;
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
     z-index: 4000;
@@ -2260,16 +2262,23 @@ main.contact-page {
     transition: background 0.2s ease;
 }
 
+.site-search-results .search-result-link:last-child {
+    border-bottom: none;
+}
+
 .site-search-results .search-result-link:hover {
     background: #f9e5f7;
     color: #c228ba;
 }
 
 @media (max-width: 600px) {
+
     .site-search-results {
         top: 42px;
         right: 0;
         width: min(320px, calc(100vw - 2rem));
         max-height: 300px;
+        z-index: 4000;
     }
+
 }
