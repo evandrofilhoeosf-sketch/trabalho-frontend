@@ -1,4 +1,3 @@
-
 /* =========================================
    INICIALIZAÇÃO DOS RECURSOS DA PÁGINA
 ========================================= */
@@ -196,7 +195,6 @@
                                 ];
 
 
-                        
                                 const candidatos = elementos
                                     .map(function (elemento) {
 
@@ -264,6 +262,7 @@
                                         return item !== null && item.correspondeTodos;
                                     })
                                     .sort(function (a, b) {
+
                                         // Primeiro, os melhores títulos
                                         if (b.pontuacao !== a.pontuacao) {
                                             return b.pontuacao - a.pontuacao;
@@ -274,6 +273,7 @@
                                             a.elemento.textContent.length -
                                             b.elemento.textContent.length
                                         );
+
                                     });
 
 
@@ -310,11 +310,11 @@
                                 }
 
 
-                                // Monta o endereço da seção específica
+                                // Monta o endereço da seção específica incluindo o termo pesquisado na URL
+                                const termoUrl = encodeURIComponent(termoOriginal);
                                 const destino = alvo
-                                    ? endereco.href + '#' +
-                                      encodeURIComponent(alvo.elemento.id)
-                                    : endereco.href;
+                                    ? endereco.href + '?q=' + termoUrl + '#' + encodeURIComponent(alvo.elemento.id)
+                                    : endereco.href + '?q=' + termoUrl;
 
 
                                 return {
@@ -465,6 +465,50 @@
 
             });
 
+        }
+
+
+        /* =========================================
+           DESTAQUE DO TERMO PESQUISADO NA PÁGINA
+        ========================================= */
+        const urlParams = new URLSearchParams(window.location.search);
+        const termoBusca = urlParams.get('q');
+
+        if (termoBusca) {
+            const termoLimpo = termoBusca.trim();
+            if (termoLimpo.length > 1) {
+                destacarTextoNaPagina(document.body, termoLimpo);
+            }
+        }
+
+        function destacarTextoNaPagina(elemento, termo) {
+            const regex = new RegExp(`(${escapeRegExp(termo)})`, 'gi');
+
+            function percorrerNos(no) {
+                if (no.nodeType === 3) { // Nó de texto
+                    let pai = no.parentNode;
+                    if (pai && ['SCRIPT', 'STYLE', 'INPUT', 'TEXTAREA', 'BUTTON'].includes(pai.tagName)) {
+                        return;
+                    }
+                    let conteudo = no.nodeValue;
+                    if (regex.test(conteudo)) {
+                        let novoHtml = conteudo.replace(regex, '<mark class="termo-destacado">$1</mark>');
+                        let spanTemp = document.createElement('span');
+                        spanTemp.innerHTML = novoHtml;
+                        pai.replaceChild(spanTemp, no);
+                    }
+                } else if (no.nodeType === 1 && no.childNodes && !no.classList.contains('termo-destacado')) {
+                    for (let i = 0; i < no.childNodes.length; i++) {
+                        percorrerNos(no.childNodes[i]);
+                    }
+                }
+            }
+
+            percorrerNos(elemento);
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
 
 

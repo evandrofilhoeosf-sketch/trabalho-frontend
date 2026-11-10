@@ -2346,3 +2346,12 @@ section[id] {
 [id] {
     scroll-margin-top: 150px;
 }
+
+/* --- ESTILO PARA O TEXTO PESQUISADO E DESTAQUE --- */
+mark.termo-destacado {
+    background-color: #ffe600; /* Cor de destaque (amarelo vivo) */
+    color: #7e3b7a;          /* Cor do texto para combinar com a identidade */
+    padding: 0.1rem 0.2rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
