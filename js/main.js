@@ -62,275 +62,402 @@
             });
         }
 
-/* =========================================
-   PESQUISA EXPANSÍVEL E FUNCIONAL
-========================================= */
 
-const searchForm = document.getElementById('searchForm');
-const searchToggle = document.getElementById('searchToggle');
-const searchInput = document.getElementById('searchInput');
+        /* =========================================
+           PESQUISA EXPANSÍVEL E FUNCIONAL
+        ========================================= */
 
-if (searchForm && searchToggle && searchInput) {
+        const searchForm = document.getElementById('searchForm');
+        const searchToggle = document.getElementById('searchToggle');
+        const searchInput = document.getElementById('searchInput');
 
-    // Cria a área de resultados
-    const resultadosPesquisa = document.createElement('div');
+        if (searchForm && searchToggle && searchInput) {
 
-    resultadosPesquisa.className = 'site-search-results';
-    resultadosPesquisa.id = 'searchResults';
-    resultadosPesquisa.setAttribute('aria-live', 'polite');
+            // Cria a área de resultados
+            const resultadosPesquisa = document.createElement('div');
 
-    searchForm.parentElement.appendChild(resultadosPesquisa);
+            resultadosPesquisa.className = 'site-search-results';
+            resultadosPesquisa.id = 'searchResults';
+            resultadosPesquisa.setAttribute('aria-live', 'polite');
 
-    // Páginas disponíveis
-    const paginas = [
-        { nome: 'Home', arquivo: 'index.html' },
-        { nome: 'Lugares e Cultura', arquivo: 'lugares.html' },
-        { nome: 'Onde Comer?', arquivo: 'onde-comer.html' },
-        { nome: 'Padaria e Confeitaria', arquivo: 'padaria-confeitaria.html' },
-        { nome: 'Mulheres em Vitória', arquivo: 'mulheres.html' },
-        { nome: 'Eventos', arquivo: 'eventos.html' },
-        { nome: 'Contatos', arquivo: 'contatos.html' }
-    ];
+            searchForm.parentElement.appendChild(resultadosPesquisa);
 
-    // Normaliza os textos
-    function normalizarTexto(texto) {
-        return texto
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase();
-    }
 
-    // Fecha a pesquisa
-    function fecharPesquisa() {
+            // Páginas disponíveis
+            const paginas = [
+                { nome: 'Home', arquivo: 'index.html' },
+                { nome: 'Lugares e Cultura', arquivo: 'lugares.html' },
+                { nome: 'Onde Comer?', arquivo: 'onde-comer.html' },
+                { nome: 'Padaria e Confeitaria', arquivo: 'padaria-confeitaria.html' },
+                { nome: 'Mulheres em Vitória', arquivo: 'mulheres.html' },
+                { nome: 'Eventos', arquivo: 'eventos.html' },
+                { nome: 'Contatos', arquivo: 'contatos.html' }
+            ];
 
-        searchForm.classList.remove('search-open');
-        resultadosPesquisa.classList.remove('resultados-abertos');
 
-        searchToggle.setAttribute('aria-expanded', 'false');
-        searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
-
-        resultadosPesquisa.innerHTML = '';
-    }
-
-    // Realiza a pesquisa
-    async function pesquisar() {
-
-        const termoOriginal = searchInput.value.trim();
-        const termo = normalizarTexto(termoOriginal);
-
-        if (!termo) {
-            resultadosPesquisa.innerHTML =
-                '<p>Digite algo para pesquisar.</p>';
-
-            resultadosPesquisa.classList.add('resultados-abertos');
-            return;
-        }
-
-        resultadosPesquisa.innerHTML =
-            '<p>Pesquisando...</p>';
-
-        resultadosPesquisa.classList.add('resultados-abertos');
-
-        const termos = [...new Set(termo.split(/\s+/))];
-
-        try {
-
-            const paginasPesquisadas = await Promise.all(
-
-                paginas.map(async function (pagina) {
-
-                    try {
-
-                        // Considera a localização do projeto
-                        const endereco = new URL(
-                            pagina.arquivo,
-                            document.baseURI
-                        );
-
-                        const resposta = await fetch(endereco.href);
-
-                        if (!resposta.ok) {
-                            return null;
-                        }
-
-                        const html = await resposta.text();
-
-                        const documento = new DOMParser()
-                            .parseFromString(html, 'text/html');
-
-                        // Pesquisa somente no conteúdo principal
-                        const conteudo =
-                            documento.querySelector('main') ||
-                            documento.body;
-
-                        const titulo =
-                            conteudo.querySelector('h1')?.textContent?.trim() ||
-                            documento.title ||
-                            pagina.nome;
-
-                        const textoConteudo = normalizarTexto(
-                            conteudo.textContent || ''
-                        );
-
-                        const textoTitulo = normalizarTexto(titulo);
-
-                        const encontrados = termos.filter(function (palavra) {
-                            return textoConteudo.includes(palavra);
-                        });
-
-                        // Ignora páginas sem correspondência
-                        if (encontrados.length === 0) {
-                            return null;
-                        }
-
-                        // Dá prioridade para correspondências no título
-                        let pontuacao = encontrados.length;
-
-                        termos.forEach(function (palavra) {
-                            if (textoTitulo.includes(palavra)) {
-                                pontuacao += 3;
-                            }
-                        });
-
-                        // Prioriza a expressão completa
-                        if (textoConteudo.includes(termo)) {
-                            pontuacao += 5;
-                        }
-
-                        return {
-                            nome: titulo,
-                            arquivo: endereco.href,
-                            pontuacao: pontuacao
-                        };
-
-                    } catch (erro) {
-
-                        console.warn(
-                            'Erro ao consultar:',
-                            pagina.arquivo,
-                            erro
-                        );
-
-                        return null;
-                    }
-
-                })
-
-            );
-
-            // Organiza os resultados
-            const encontrados = paginasPesquisadas
-                .filter(Boolean)
-                .sort(function (a, b) {
-                    return b.pontuacao - a.pontuacao;
-                });
-
-            resultadosPesquisa.innerHTML = '';
-
-            // Título dos resultados
-            const tituloResultados = document.createElement('p');
-
-            tituloResultados.className = 'search-results-heading';
-
-            tituloResultados.textContent =
-                encontrados.length +
-                (encontrados.length === 1
-                    ? ' resultado encontrado'
-                    : ' resultados encontrados');
-
-            resultadosPesquisa.appendChild(tituloResultados);
-
-            // Nenhum resultado
-            if (encontrados.length === 0) {
-
-                const mensagem = document.createElement('p');
-
-                mensagem.textContent =
-                    'Nenhum resultado encontrado. Tente outra palavra.';
-
-                resultadosPesquisa.appendChild(mensagem);
-
-                return;
+            // Normaliza os textos
+            function normalizarTexto(texto) {
+                return texto
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .toLowerCase()
+                    .trim();
             }
 
-            // Exibe os resultados
-            encontrados.forEach(function (resultado) {
 
-                const link = document.createElement('a');
+            // Fecha a pesquisa
+            function fecharPesquisa() {
 
-                link.href = resultado.arquivo;
-                link.className = 'search-result-link';
-                link.textContent = resultado.nome;
+                searchForm.classList.remove('search-open');
+                resultadosPesquisa.classList.remove('resultados-abertos');
 
-                resultadosPesquisa.appendChild(link);
+                searchToggle.setAttribute('aria-expanded', 'false');
+                searchToggle.setAttribute('aria-label', 'Abrir pesquisa');
+
+                resultadosPesquisa.innerHTML = '';
+            }
+
+
+            // Realiza a pesquisa
+            async function pesquisar() {
+
+                const termoOriginal = searchInput.value.trim();
+                const termo = normalizarTexto(termoOriginal);
+
+                if (!termo) {
+                    resultadosPesquisa.innerHTML =
+                        '<p>Digite algo para pesquisar.</p>';
+
+                    resultadosPesquisa.classList.add('resultados-abertos');
+                    return;
+                }
+
+                resultadosPesquisa.innerHTML =
+                    '<p>Pesquisando...</p>';
+
+                resultadosPesquisa.classList.add('resultados-abertos');
+
+                const termos = [...new Set(termo.split(/\s+/))];
+
+                try {
+
+                    const paginasPesquisadas = await Promise.all(
+
+                        paginas.map(async function (pagina) {
+
+                            try {
+
+                                // Localiza a página
+                                const endereco = new URL(
+                                    pagina.arquivo,
+                                    document.baseURI
+                                );
+
+                                const resposta = await fetch(endereco.href);
+
+                                if (!resposta.ok) {
+                                    console.warn(
+                                        'Página não encontrada:',
+                                        pagina.arquivo
+                                    );
+                                    return null;
+                                }
+
+                                const html = await resposta.text();
+
+                                const documento = new DOMParser()
+                                    .parseFromString(html, 'text/html');
+
+
+                                // Pesquisa no conteúdo principal
+                                const conteudo =
+                                    documento.querySelector('main') ||
+                                    documento.body;
+
+
+                                const titulo =
+                                    conteudo.querySelector('h1')?.textContent?.trim() ||
+                                    documento.title ||
+                                    pagina.nome;
+
+
+                                const textoConteudo = normalizarTexto(
+                                    conteudo.textContent || ''
+                                );
+
+                                const textoTitulo = normalizarTexto(titulo);
+
+
+                                // Identifica elementos com ID
+                                const elementos = [
+                                    ...conteudo.querySelectorAll(
+                                        'article[id], section[id], [id]'
+                                    )
+                                ];
+
+
+                                // Procura a seção mais específica
+                                const candidatos = elementos
+                                    .map(function (elemento) {
+
+                                        const textoElemento = normalizarTexto(
+                                            elemento.textContent || ''
+                                        );
+
+                                        const palavrasEncontradas = termos.filter(
+                                            function (palavra) {
+                                                return textoElemento.includes(palavra);
+                                            }
+                                        );
+
+                                        const correspondeTodos = termos.every(
+                                            function (palavra) {
+                                                return textoElemento.includes(palavra);
+                                            }
+                                        );
+
+                                        const tituloElemento =
+                                            elemento.querySelector('h2, h3, h4');
+
+                                        const nomeElemento =
+                                            tituloElemento?.textContent.trim() ||
+                                            elemento.id;
+
+                                        const textoTituloElemento =
+                                            normalizarTexto(nomeElemento);
+
+                                        let pontuacaoElemento =
+                                            palavrasEncontradas.length;
+
+                                        // Prioriza títulos que correspondem à pesquisa
+                                        termos.forEach(function (palavra) {
+                                            if (textoTituloElemento.includes(palavra)) {
+                                                pontuacaoElemento += 5;
+                                            }
+                                        });
+
+                                        // Prioriza a expressão completa
+                                        if (textoElemento.includes(termo)) {
+                                            pontuacaoElemento += 5;
+                                        }
+
+                                        return {
+                                            elemento: elemento,
+                                            nome: nomeElemento,
+                                            pontuacao: pontuacaoElemento,
+                                            correspondeTodos: correspondeTodos
+                                        };
+
+                                    })
+                                    .filter(function (item) {
+                                        return item.correspondeTodos;
+                                    })
+                                    .sort(function (a, b) {
+
+                                        // Primeiro, os melhores títulos
+                                        if (b.pontuacao !== a.pontuacao) {
+                                            return b.pontuacao - a.pontuacao;
+                                        }
+
+                                        // Depois, o conteúdo mais específico
+                                        return (
+                                            a.elemento.textContent.length -
+                                            b.elemento.textContent.length
+                                        );
+
+                                    });
+
+
+                                const alvo = candidatos[0];
+
+
+                                // Verifica se a página possui correspondência
+                                const encontrados = termos.filter(
+                                    function (palavra) {
+                                        return textoConteudo.includes(palavra);
+                                    }
+                                );
+
+
+                                if (encontrados.length === 0) {
+                                    return null;
+                                }
+
+
+                                // Pontuação geral da página
+                                let pontuacao = encontrados.length;
+
+                                termos.forEach(function (palavra) {
+
+                                    if (textoTitulo.includes(palavra)) {
+                                        pontuacao += 3;
+                                    }
+
+                                });
+
+
+                                if (textoConteudo.includes(termo)) {
+                                    pontuacao += 5;
+                                }
+
+
+                                // Monta o endereço da seção específica
+                                const destino = alvo
+                                    ? endereco.href + '#' +
+                                      encodeURIComponent(alvo.elemento.id)
+                                    : endereco.href;
+
+
+                                return {
+                                    nome: alvo
+                                        ? alvo.nome
+                                        : titulo,
+
+                                    arquivo: destino,
+
+                                    pontuacao: pontuacao +
+                                        (alvo ? alvo.pontuacao : 0)
+                                };
+
+
+                            } catch (erro) {
+
+                                console.warn(
+                                    'Erro ao consultar:',
+                                    pagina.arquivo,
+                                    erro
+                                );
+
+                                return null;
+                            }
+
+                        })
+
+                    );
+
+
+                    // Organiza os resultados
+                    const encontrados = paginasPesquisadas
+                        .filter(Boolean)
+                        .sort(function (a, b) {
+                            return b.pontuacao - a.pontuacao;
+                        });
+
+
+                    resultadosPesquisa.innerHTML = '';
+
+
+                    // Título dos resultados
+                    const tituloResultados = document.createElement('p');
+
+                    tituloResultados.className = 'search-results-heading';
+
+                    tituloResultados.textContent =
+                        encontrados.length +
+                        (encontrados.length === 1
+                            ? ' resultado encontrado'
+                            : ' resultados encontrados');
+
+                    resultadosPesquisa.appendChild(tituloResultados);
+
+
+                    // Nenhum resultado
+                    if (encontrados.length === 0) {
+
+                        const mensagem = document.createElement('p');
+
+                        mensagem.textContent =
+                            'Nenhum resultado encontrado. Tente outra palavra.';
+
+                        resultadosPesquisa.appendChild(mensagem);
+
+                        return;
+                    }
+
+
+                    // Exibe os resultados
+                    encontrados.forEach(function (resultado) {
+
+                        const link = document.createElement('a');
+
+                        link.href = resultado.arquivo;
+                        link.className = 'search-result-link';
+                        link.textContent = resultado.nome;
+
+                        resultadosPesquisa.appendChild(link);
+
+                    });
+
+                } catch (erro) {
+
+                    console.error('Erro na pesquisa:', erro);
+
+                    resultadosPesquisa.innerHTML =
+                        '<p>Não foi possível realizar a pesquisa. Verifique o servidor do site.</p>';
+                }
+            }
+
+
+            // Abre ou executa a pesquisa
+            searchToggle.addEventListener('click', function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (searchForm.classList.contains('search-open')) {
+
+                    if (searchInput.value.trim()) {
+                        pesquisar();
+                    } else {
+                        fecharPesquisa();
+                    }
+
+                } else {
+
+                    searchForm.classList.add('search-open');
+
+                    searchToggle.setAttribute('aria-expanded', 'true');
+                    searchToggle.setAttribute('aria-label', 'Pesquisar');
+
+                    searchInput.focus();
+                }
 
             });
 
-        } catch (erro) {
 
-            console.error('Erro na pesquisa:', erro);
+            // Pesquisa pelo Enter
+            searchForm.addEventListener('submit', function (event) {
 
-            resultadosPesquisa.innerHTML =
-                '<p>Não foi possível realizar a pesquisa. Verifique o servidor do site.</p>';
-        }
-    }
-
-    // Abre ou executa a pesquisa
-    searchToggle.addEventListener('click', function (event) {
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (searchForm.classList.contains('search-open')) {
-
-            if (searchInput.value.trim()) {
+                event.preventDefault();
                 pesquisar();
-            } else {
-                fecharPesquisa();
-            }
 
-        } else {
+            });
 
-            searchForm.classList.add('search-open');
 
-            searchToggle.setAttribute('aria-expanded', 'true');
-            searchToggle.setAttribute('aria-label', 'Pesquisar');
+            // Fecha ao clicar fora
+            document.addEventListener('click', function (event) {
 
-            searchInput.focus();
+                if (
+                    !searchForm.contains(event.target) &&
+                    !resultadosPesquisa.contains(event.target)
+                ) {
+                    fecharPesquisa();
+                }
+
+            });
+
+
+            // Fecha pelo Escape
+            document.addEventListener('keydown', function (event) {
+
+                if (event.key === 'Escape') {
+                    fecharPesquisa();
+                }
+
+            });
+
         }
 
-    });
-
-    // Pesquisa pelo Enter
-    searchForm.addEventListener('submit', function (event) {
-
-        event.preventDefault();
-        pesquisar();
-
-    });
-
-    // Fecha ao clicar fora
-    document.addEventListener('click', function (event) {
-
-        if (
-            !searchForm.contains(event.target) &&
-            !resultadosPesquisa.contains(event.target)
-        ) {
-            fecharPesquisa();
-        }
-
-    });
-
-    // Fecha pelo Escape
-    document.addEventListener('keydown', function (event) {
-
-        if (event.key === 'Escape') {
-            fecharPesquisa();
-        }
-
-    });
-
-}
 
         /* =========================================
            BOTÃO VOLTAR AO INÍCIO
@@ -352,9 +479,7 @@ if (searchForm && searchToggle && searchInput) {
                 );
 
                 botaoTopo.tabIndex = deveAparecer ? 0 : -1;
-
             }
-
 
             window.addEventListener('scroll', atualizarBotaoTopo, {
                 passive: true
@@ -362,25 +487,19 @@ if (searchForm && searchToggle && searchInput) {
 
             atualizarBotaoTopo();
 
-
             botaoTopo.addEventListener('click', function (event) {
 
                 event.preventDefault();
 
                 window.scrollTo({
-
                     top: 0,
-
                     left: 0,
-
                     behavior: 'smooth'
-
                 });
 
             });
 
         }
-
 
 
         /* =========================================
@@ -394,17 +513,12 @@ if (searchForm && searchToggle && searchInput) {
             function atualizarCabecalho() {
 
                 if (window.scrollY > 60) {
-
                     cabecalho.classList.add('header-reduzido');
-
                 } else {
-
                     cabecalho.classList.remove('header-reduzido');
-
                 }
 
             }
-
 
             window.addEventListener('scroll', atualizarCabecalho, {
                 passive: true
@@ -413,7 +527,6 @@ if (searchForm && searchToggle && searchInput) {
             atualizarCabecalho();
 
         }
-
 
 
         /* =========================================
@@ -435,13 +548,11 @@ if (searchForm && searchToggle && searchInput) {
 
             }
 
-
             ajustarAlturaRodape();
 
             window.addEventListener('resize', ajustarAlturaRodape);
 
             window.addEventListener('load', ajustarAlturaRodape);
-
 
             if (window.ResizeObserver) {
 

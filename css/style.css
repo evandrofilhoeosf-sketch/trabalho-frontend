@@ -2282,3 +2282,13 @@ main.contact-page {
     }
 
 }
+
+article[id],
+section[id] {
+    scroll-margin-top: 150px;
+}
+
+/* Espaçamento ao navegar para uma seção específica */
+[id] {
+    scroll-margin-top: 150px;
+}
