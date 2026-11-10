@@ -36,6 +36,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    padding-bottom: 55px;
     background: transparent;
     font-family: var(--font-sans);
     line-height: 1.7;
@@ -195,7 +196,10 @@ body {
     border-bottom: 1px solid var(--text-primary);
 }
 
-/* Estilo reduzido ao rolar */
+/* =========================================
+   CABEÇALHO REDUZIDO AO ROLAR
+========================================= */
+
 .site-header.header-reduzido {
     padding-top: 0.35rem;
     padding-bottom: 0.35rem;
@@ -856,35 +860,88 @@ footer {
     }
 }
 
+/* =====================================================
+   RESPONSIVIDADE MOBILE
+===================================================== */
+
 @media (max-width: 600px) {
+
+    /* FUNDO */
     html {
-        background: linear-gradient(180deg, #eb8ee3 0%, #8f0c77 50%, #eb8ee3 100%);
+        background: linear-gradient(
+            180deg,
+            #eb8ee3 0%,
+            #8f0c77 50%,
+            #eb8ee3 100%
+        );
         background-attachment: scroll;
         background-size: cover;
     }
 
-    .site-header.header-reduzido .menu-toggle span {
-        width: 20px !important;
-        height: 2px !important;
-        margin: 3.5px 0 !important;
-    }
-
+    /* CABEÇALHO */
     .site-header {
-        position: sticky !important; /* Força o cabeçalho a ficar grudado no topo */
+        position: sticky !important;
         top: 0 !important;
         z-index: 3000;
         padding: 1rem;
         background: #ffffff;
     }
 
+    .site-header.header-reduzido {
+        padding: 0.45rem 1rem;
+    }
+
+    .header-main-container {
+        position: relative;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        margin-bottom: 0.65rem;
+        padding-bottom: 9px;
+    }
+
+    .site-header.header-reduzido .header-main-container {
+        gap: 0.35rem;
+        margin-bottom: 0.35rem;
+        padding-bottom: 6px;
+    }
+
+    /* LOGO */
+    .logo-center {
+        align-self: center;
+        font-size: clamp(2.4rem, 10vw, 3.2rem);
+    }
+
+    .site-header.header-reduzido .logo-center {
+        font-size: 2rem;
+    }
+
+    /* MENU HAMBÚRGUER */
     .menu-toggle {
         display: block;
         position: absolute;
         top: 0.65rem;
         left: 0.75rem;
-        z-index: 2002;
+        z-index: 3002;
     }
 
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+    }
+
+    .site-header.header-reduzido .menu-toggle {
+        top: 0.35rem;
+    }
+
+    .site-header.header-reduzido .menu-toggle span {
+        width: 20px;
+        height: 2px;
+        margin: 3.5px 0;
+    }
+
+    /* MENU DE NAVEGAÇÃO */
     .side-nav {
         display: none;
         position: absolute;
@@ -892,8 +949,8 @@ footer {
         left: 0;
         width: 100%;
         background: #ffffff;
-        z-index: 2001;
-        box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+        z-index: 3001;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
     }
 
     .side-nav.menu-aberto {
@@ -904,6 +961,8 @@ footer {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
+        overflow: visible;
+        padding: 0;
     }
 
     .side-nav ul li {
@@ -918,19 +977,7 @@ footer {
         white-space: normal;
     }
 
-    .header-main-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.75rem;
-        margin-bottom: 0.65rem;
-        padding-bottom: 9px;
-    }
-
-    .logo-center {
-        align-self: center;
-        font-size: clamp(2.4rem, 10vw, 3.2rem);
-    }
-
+    /* BARRA DE PESQUISA */
     .header-search-bar {
         top: 0;
         right: 0;
@@ -949,19 +996,59 @@ footer {
     .header-search-bar.search-open {
         width: min(320px, calc(100vw - 2rem));
         height: 38px;
+        z-index: 3005;
     }
 
+    /* PESQUISA COM CABEÇALHO REDUZIDO */
+    .site-header.header-reduzido .header-search-bar {
+        top: 0;
+        right: 0;
+        width: 34px;
+        height: 30px;
+    }
+
+    .site-header.header-reduzido .header-search-bar button {
+        flex: 0 0 34px;
+        width: 34px;
+        min-width: 34px;
+        height: 30px;
+    }
+
+    .site-header.header-reduzido .header-search-bar.search-open {
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 38px;
+        z-index: 3005;
+    }
+
+    .site-header.header-reduzido .header-search-bar.search-open input {
+        width: auto;
+        padding: 0 0.8rem;
+        opacity: 1;
+        pointer-events: auto;
+        font-size: 0.9rem;
+    }
+
+    .header-search-bar.search-open {
+        transition: none;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
     main {
         padding: 2.2rem 1rem 3rem;
         box-shadow: none;
     }
 
+    /* CARDS */
     .card img,
     .card .img {
         height: auto;
         aspect-ratio: 16 / 9;
     }
 
+    /* PÁGINA DE LUGARES */
     .places-main {
         padding-top: 2.2rem;
     }
@@ -991,6 +1078,7 @@ footer {
         line-height: 1.7;
     }
 
+    /* CONTEÚDOS RELACIONADOS */
     .related-section {
         margin-top: 3.5rem;
     }
@@ -1002,40 +1090,6 @@ footer {
 
     .related-img-wrap {
         height: 180px;
-    }
-
-    /* Mantém a barra de pesquisa visível e ajustada quando o header for reduzido no scroll */
-    .site-header.header-reduzido .header-search-bar {
-        top: 0.35rem !important;
-        width: 34px !important;
-        height: 30px !important;
-    }
-
-    .site-header.header-reduzido .header-search-bar button {
-        flex: 0 0 34px !important;
-        width: 34px !important;
-        min-width: 34px !important;
-        height: 30px !important;
-    }
-
-    .site-header.header-reduzido .header-search-bar.search-open {
-        width: calc(100% - 2rem) !important;
-        right: 1rem !important;
-        left: 1rem !important;
-        height: 38px !important;
-        z-index: 3005;
-    }
-
-    .site-header.header-reduzido .header-search-bar.search-open input {
-        width: auto !important;
-        padding: 0 0.8rem !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        font-size: 0.9rem !important;
-    }
-
-    .header-search-bar.search-open {
-        transition: none !important;
     }
 }
 

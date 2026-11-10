@@ -503,7 +503,7 @@
 
 
         /* =========================================
-           CABEÇALHO REDUZIDO AO ROLAR
+        CABEÇALHO REDUZIDO AO ROLAR
         ========================================= */
 
         const cabecalho = document.querySelector('.site-header');
@@ -511,13 +511,10 @@
         if (cabecalho) {
 
             function atualizarCabecalho() {
-
-                if (window.scrollY > 60) {
-                    cabecalho.classList.add('header-reduzido');
-                } else {
-                    cabecalho.classList.remove('header-reduzido');
-                }
-
+                cabecalho.classList.toggle(
+                    'header-reduzido',
+                    window.scrollY > 60
+                );
             }
 
             window.addEventListener('scroll', atualizarCabecalho, {
@@ -525,7 +522,6 @@
             });
 
             atualizarCabecalho();
-
         }
 
 
@@ -541,10 +537,7 @@
 
                 const altura = rodape.offsetHeight;
 
-                document.body.style.setProperty(
-                    '--footer-height',
-                    altura + 'px'
-                );
+                document.body.style.paddingBottom = altura + 'px';
 
             }
 
